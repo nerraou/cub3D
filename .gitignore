@@ -1,0 +1,13 @@
+cube3D
+
+# Object files
+*.o
+
+# Libraries
+*.a
+
+# Executables
+*.out
+
+# Debug files
+*.dSYM/
