@@ -1,21 +1,20 @@
 NAME = cub3D
-CPPFLAGS = -Wall -Wextra -Werror -Imlx
-HEADERS = header.hpp 
+FLAGS = -Wall -Wextra -Werror -Imlx
+HEADERS =
 	  
-SRC = main.cpp
+SRC = main.c
 
-
-OBJ = $(SRC:.cpp=.o)
+OBJ = $(SRC:.c=.o)
 
 INCLUDES_PATH = -I ./
 
 all:  $(NAME)
 
-%.o: %.cpp $(HEADERS)
-	gcc $(CPPFLAGS) $(INCLUDES_PATH)  -o $@ -c $<
+%.o: %.c $(HEADERS)
+	$(CC) $(FLAGS) $(INCLUDES_PATH) -o $@ -c $<
 
 $(NAME): $(OBJ)
-	gcc  -lmlx -framework OpenGL -framework AppKit -o $(NAME) $^
+	$(CC) -lmlx -framework OpenGL -framework AppKit -o $(NAME) $^
 
 clean:
 	rm -f $(OBJ)
