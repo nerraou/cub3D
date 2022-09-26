@@ -1,0 +1,25 @@
+NAME = cub3D
+FLAGS = -Wall -Wextra -Werror
+HEADERS =
+
+SRC = main.c
+
+OBJ = $(SRC:.c=.o)
+
+INCLUDES_PATH = -I $(MLX_PATH)
+
+all: $(NAME)
+
+%.o: %.c $(HEADERS)
+	$(CC) $(FLAGS) $(INCLUDES_PATH) -O3 -o $@ -c $<
+
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) $(INCLUDES_PATH) -L$(MLX_PATH) -lmlx_Linux -lXext -lX11 -lm -lz -o $(NAME)
+
+clean:
+	rm -f $(OBJ)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
