@@ -39,15 +39,15 @@ SRC = \
 
 OBJ = $(SRC:.c=.o)
 
-INCLUDES_PATH =  $(MLX_PATH)
+INCLUDES_PATH =  ./includes
 
 all: $(NAME)
 
 %.o: %.c $(HEADERS)
-	$(CC) $(FLAGS) -I $(INCLUDES_PATH) -O3 -o $@ -c $<
+	$(CC) $(FLAGS) -I $(INCLUDES_PATH) -I $(MLX_PATH) -o $@ -c $<
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) $(INCLUDES_PATH) -L$(MLX_PATH) -lmlx_Linux -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) $(OBJ) -I $(INCLUDES_PATH) -I $(MLX_PATH) -L$(MLX_PATH) -lmlx_Linux -lXext -lX11 -lm -lz -o $(NAME)
 
 clean:
 	rm -f $(OBJ)
