@@ -17,3 +17,5 @@ export MLX_PATH=/path/to/mlx_linux
 
 make -f MakefileLinux && ./cub3D
 ```
+
+![This is an image](cub3D.png)
