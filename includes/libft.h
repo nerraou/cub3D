@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:34:38 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/27 11:35:37 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/09/28 15:06:57 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ char *ft_strjoin(char const *s1, char const *s2);
 char **ft_split(char const *s, char c);
 
 size_t ft_strlen(const char *s);
+char *ft_strcpy(char *dst, const char *src);
 size_t ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 void *ft_memset(void *s, int c, size_t n);

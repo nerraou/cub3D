@@ -1,6 +1,6 @@
 NAME = cub3D
 FLAGS = -Wall -Wextra -Werror -Imlx
-HEADERS = $(addprefix $(INCLUDES_PATH)/,list.h libft.h)
+HEADERS = $(addprefix $(INCLUDES_PATH)/,list.h libft.h get_next_line.h map.h)
 
 SRC = \
 	src/libft/ft_atoi.c\
@@ -17,6 +17,7 @@ SRC = \
 	src/libft/ft_substr.c\
 	src/libft/ft_strjoin.c\
 	src/libft/ft_strlcpy.c\
+	src/libft/ft_strcpy.c\
 	src/libft/ft_memcpy.c\
 	src/libft/is_long.c\
 	src/libft/ft_atol.c\
@@ -29,20 +30,28 @@ SRC = \
 	src/libft/ft_split.c\
 	src/libft/ft_tolower.c\
 \
+	src/gnl/get_next_line_utils.c\
+	src/gnl/get_next_line.c\
+\
 	src/list/add_back.c\
 	src/list/add_front.c\
 	src/list/elem_new.c\
 	src/list/list_del.c\
 	src/list/list_new.c\
 \
-	main.c
+	src/map/set_map_textures.c\
+	src/map/set_east_texture.c\
+	src/map/set_north_texture.c\
+	src/map/set_south_texture.c\
+	src/map/set_west_texture.c\
+\
+	src/main.c
 
 OBJ = $(SRC:.c=.o)
 
 INCLUDES_PATH = ./includes
 
 all:  $(NAME)
-	echo $(HEADERS)
 
 %.o: %.c $(HEADERS)
 	$(CC) $(FLAGS) -I $(INCLUDES_PATH) -o $@ -c $<

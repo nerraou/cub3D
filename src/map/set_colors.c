@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   set_colors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 11:51:58 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/28 15:10:00 by nerraou          ###   ########.fr       */
+/*   Created: 2022/09/28 17:24:04 by nerraou           #+#    #+#             */
+/*   Updated: 2022/09/28 17:26:56 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "map.h"
 
-char *ft_strdup(const char *s)
+void set_colors(char *line, t_map *map)
 {
-	int len;
-	char *dst;
-
-	len = ft_strlen(s);
-	dst = (char *)ft_malloc(sizeof(char) * (len + 1));
-	if (!dst)
-		return (NULL);
-	ft_strcpy(dst, s);
-	return (dst);
+	if (line[0] == 'F')
+		set_floor_color(line, map);
+	else if (line[0] == 'C')
+		set_ceiling_color(line, map);
 }
