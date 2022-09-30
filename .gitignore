@@ -1,5 +1,8 @@
-cube3D
+cub3D
 .Ds_Store
+
+# vscode
+.vscode
 
 # Object files
 *.o
