@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   set_east_texture.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 11:51:58 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/28 15:10:00 by nerraou          ###   ########.fr       */
+/*   Created: 2022/09/28 16:45:04 by nerraou           #+#    #+#             */
+/*   Updated: 2022/09/28 17:15:03 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "map.h"
 
-char *ft_strdup(const char *s)
+void set_east_texture(char *line, t_map *map)
 {
-	int len;
-	char *dst;
+	size_t size;
 
-	len = ft_strlen(s);
-	dst = (char *)ft_malloc(sizeof(char) * (len + 1));
-	if (!dst)
-		return (NULL);
-	ft_strcpy(dst, s);
-	return (dst);
+	size = ft_strlen(line + ft_indexof(line, '.'));
+	map->ea_wall_texture = (char *)malloc(sizeof(char) * size + 1);
+	if (!map->no_wall_texture)
+		return;
+	ft_strncpy(map->ea_wall_texture, line + ft_indexof(line, '.'), size + 1);
 }

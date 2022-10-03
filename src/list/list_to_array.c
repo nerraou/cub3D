@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   list_to_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 11:51:58 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/28 15:10:00 by nerraou          ###   ########.fr       */
+/*   Created: 2022/10/03 08:22:20 by nerraou           #+#    #+#             */
+/*   Updated: 2022/10/03 09:22:59 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "list.h"
 
-char *ft_strdup(const char *s)
+char **list_to_array(const t_list *list)
 {
-	int len;
-	char *dst;
+	t_element *cur;
+	char **array;
+	int i;
 
-	len = ft_strlen(s);
-	dst = (char *)ft_malloc(sizeof(char) * (len + 1));
-	if (!dst)
-		return (NULL);
-	ft_strcpy(dst, s);
-	return (dst);
+	array = (char **)malloc(sizeof(char *) * list->size);
+	cur = list->head;
+	i = 0;
+	while (cur != NULL)
+	{
+		array[i] = (char *)cur->content;
+		cur = cur->next;
+		i++;
+	}
+	return (array);
 }

@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   set_player_orientation.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 11:51:58 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/28 15:10:00 by nerraou          ###   ########.fr       */
+/*   Created: 2022/09/30 21:58:36 by ybahlaou          #+#    #+#             */
+/*   Updated: 2022/09/30 22:03:08 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "map.h"
 
-char *ft_strdup(const char *s)
+void set_player_orientation(const char *str, t_map *map)
 {
-	int len;
-	char *dst;
+	int i;
 
-	len = ft_strlen(s);
-	dst = (char *)ft_malloc(sizeof(char) * (len + 1));
-	if (!dst)
-		return (NULL);
-	ft_strcpy(dst, s);
-	return (dst);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (ft_indexof("NSEW", str[i]) != -1)
+		{
+			map->player_orientation = str[i];
+			break;
+		}
+		i++;
+	}
 }
