@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:13:23 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/30 22:03:16 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/10/03 09:22:31 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ void set_player_orientation(const char *str, t_map *map);
 void set_ceiling_color(const char *line, t_map *map);
 void set_floor_color(const char *line, t_map *map);
 void set_colors(char *line, t_map *map);
+void init_map(t_map *map);
+
 int parse_color(const char *str);
+int has_header(const t_map *map);
 
 #endif

@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_player_orientation.c                           :+:      :+:    :+:   */
+/*   has_header.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 21:58:36 by ybahlaou          #+#    #+#             */
-/*   Updated: 2022/09/30 22:03:08 by ybahlaou         ###   ########.fr       */
+/*   Created: 2022/10/03 08:18:40 by nerraou           #+#    #+#             */
+/*   Updated: 2022/10/03 09:22:43 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-void set_player_orientation(const char *str, t_map *map)
+int has_header(const t_map *map)
 {
-	int i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (ft_indexof("NSEW", str[i]) != -1)
-		{
-			map->player_orientation = str[i];
-			break;
-		}
-		i++;
-	}
+	return (map->ceiling_color != -1 &&
+			map->floor_color != -1 &&
+			map->no_wall_texture &&
+			map->so_wall_texture &&
+			map->we_wall_texture &&
+			map->ea_wall_texture);
 }

@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:01:52 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/27 11:01:54 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/10/03 08:25:56 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ typedef struct s_list
 void add_front(t_list *list, void *content);
 void add_back(t_list *last, void *content);
 void list_del(t_list **lst, void (*del)(void *));
-void del_element_token(t_element *elm);
+void del_element(t_element *elm);
+
+char **list_to_array(const t_list *list);
 
 t_element *elem_new(void *content);
 

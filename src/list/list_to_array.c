@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_player_orientation.c                           :+:      :+:    :+:   */
+/*   list_to_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 21:58:36 by ybahlaou          #+#    #+#             */
-/*   Updated: 2022/09/30 22:03:08 by ybahlaou         ###   ########.fr       */
+/*   Created: 2022/10/03 08:22:20 by nerraou           #+#    #+#             */
+/*   Updated: 2022/10/03 09:22:59 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "list.h"
 
-void set_player_orientation(const char *str, t_map *map)
+char **list_to_array(const t_list *list)
 {
+	t_element *cur;
+	char **array;
 	int i;
 
+	array = (char **)malloc(sizeof(char *) * list->size);
+	cur = list->head;
 	i = 0;
-	while (str[i] != '\0')
+	while (cur != NULL)
 	{
-		if (ft_indexof("NSEW", str[i]) != -1)
-		{
-			map->player_orientation = str[i];
-			break;
-		}
+		array[i] = (char *)cur->content;
+		cur = cur->next;
 		i++;
 	}
+	return (array);
 }

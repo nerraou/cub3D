@@ -1,6 +1,6 @@
 NAME = cub3D
 FLAGS = -Wall -Wextra -Werror -Imlx
-HEADERS = $(addprefix $(INCLUDES_PATH)/,list.h libft.h get_next_line.h map.h)
+HEADERS = $(addprefix $(INCLUDES_PATH)/,list.h libft.h get_next_line.h map.h debug.h)
 
 SRC = \
 	src/libft/ft_atoi.c\
@@ -38,6 +38,7 @@ SRC = \
 	src/list/elem_new.c\
 	src/list/list_del.c\
 	src/list/list_new.c\
+	src/list/list_to_array.c\
 \
 	src/map/set_map_textures.c\
 	src/map/set_east_texture.c\
@@ -49,6 +50,10 @@ SRC = \
 	src/map/set_ceiling_color.c\
 	src/map/set_floor_color.c\
 	src/map/parse_color.c\
+	src/map/init_map.c\
+	src/map/has_header.c\
+\
+	src/debug/debug.c\
 \
 	src/main.c
 
