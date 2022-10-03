@@ -1,6 +1,6 @@
 NAME = cub3D
 FLAGS = -Wall -Wextra -Werror -Imlx
-HEADERS = $(addprefix $(INCLUDES_PATH)/,list.h libft.h get_next_line.h map.h debug.h)
+HEADERS = $(addprefix $(INCLUDES_PATH)/,list.h libft.h get_next_line.h map.h player.h debug.h)
 
 SRC = \
 	src/libft/ft_atoi.c\
