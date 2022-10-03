@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_floor_color.c                                  :+:      :+:    :+:   */
+/*   set_player_orientation.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 17:27:38 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/28 22:39:17 by ybahlaou         ###   ########.fr       */
+/*   Created: 2022/09/30 21:58:36 by ybahlaou          #+#    #+#             */
+/*   Updated: 2022/09/30 22:03:08 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-void set_floor_color(const char *line, t_map *map)
+void set_player_orientation(const char *str, t_map *map)
 {
-    map->floor_color = parse_color(line + 1);
+    int i;
+
+    i = 0;
+    while (str[i] != '\0')
+    {
+        if (ft_indexof("NSEW", str[i]) != -1)
+        {
+            map->player_orientation = str[i];
+            break;
+        }
+        i++;
+    }
 }
