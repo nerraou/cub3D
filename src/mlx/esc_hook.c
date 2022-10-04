@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_to_array.c                                    :+:      :+:    :+:   */
+/*   esc_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 08:22:20 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/04 14:41:37 by nerraou          ###   ########.fr       */
+/*   Created: 2022/10/03 17:05:14 by nerraou           #+#    #+#             */
+/*   Updated: 2022/10/04 11:36:25 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "ft_mlx.h"
 
-char **list_to_array(const t_list *list)
+int esc_hook(int keycode, t_mlx *mlx)
 {
-	t_element *cur;
-	char **array;
-	int i;
-
-	array = (char **)malloc(sizeof(char *) * (list->size + 1));
-	cur = list->head;
-	i = 0;
-	while (cur != NULL)
+	if (keycode == 53)
 	{
-		array[i] = (char *)cur->content;
-		cur = cur->next;
-		i++;
+		mlx_destroy_window(mlx->mlx, mlx->mlx_win);
+		exit(0);
 	}
-	array[i] = NULL;
-	return (array);
+	return (0);
 }

@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_to_array.c                                    :+:      :+:    :+:   */
+/*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 08:22:20 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/04 14:41:37 by nerraou          ###   ########.fr       */
+/*   Created: 2022/10/03 14:49:30 by nerraou           #+#    #+#             */
+/*   Updated: 2022/10/03 15:25:11 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "ft_mlx.h"
 
-char **list_to_array(const t_list *list)
+void ft_init(t_data *data, t_mlx *mlx)
 {
-	t_element *cur;
-	char **array;
-	int i;
-
-	array = (char **)malloc(sizeof(char *) * (list->size + 1));
-	cur = list->head;
-	i = 0;
-	while (cur != NULL)
-	{
-		array[i] = (char *)cur->content;
-		cur = cur->next;
-		i++;
-	}
-	array[i] = NULL;
-	return (array);
+	mlx->mlx = mlx_init();
+	data->width = 1000;
+	data->height = 1000;
+	mlx->mlx_win = mlx_new_window(mlx->mlx, data->width, data->height, "FDF");
+	data->img = mlx_new_image(mlx->mlx, data->width, data->height);
+	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
+								   &data->line_length, &data->endian);
 }

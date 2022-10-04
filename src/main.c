@@ -3,9 +3,13 @@
 #include "get_next_line.h"
 #include "map.h"
 #include "debug.h"
+#include "ft_mlx.h"
 
 int main(void)
 {
+	t_data window_data;
+	t_mlx mlx;
+
 	char *line;
 	t_map data;
 	t_list *list;
@@ -35,6 +39,11 @@ int main(void)
 		line = get_next_line(fd);
 	}
 	data.map_array = list_to_array(list);
+	ft_init(&window_data, &mlx);
+	draw(&window_data, data.map_array);
+	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, window_data.img, 0, 0);
+	mlx_key_hook(mlx.mlx_win, esc_hook, &mlx);
+	mlx_loop(mlx.mlx);
 	printf("%s\n", data.so_wall_texture);
 	printf("%s\n", data.we_wall_texture);
 	printf("%s\n", data.no_wall_texture);

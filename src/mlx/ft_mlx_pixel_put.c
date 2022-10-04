@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_to_array.c                                    :+:      :+:    :+:   */
+/*   ft_mlx_pixel_put.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 08:22:20 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/04 14:41:37 by nerraou          ###   ########.fr       */
+/*   Created: 2022/10/03 15:09:46 by nerraou           #+#    #+#             */
+/*   Updated: 2022/10/03 17:04:22 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "ft_mlx.h"
 
-char **list_to_array(const t_list *list)
+void ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	t_element *cur;
-	char **array;
-	int i;
+	char *dst;
 
-	array = (char **)malloc(sizeof(char *) * (list->size + 1));
-	cur = list->head;
-	i = 0;
-	while (cur != NULL)
-	{
-		array[i] = (char *)cur->content;
-		cur = cur->next;
-		i++;
-	}
-	array[i] = NULL;
-	return (array);
+	if (x >= data->width || y >= data->height || x < 0 || y < 0)
+		return;
+	dst = data->addr + (y * data->line_length + x * 4);
+	*(unsigned int *)dst = color;
 }
