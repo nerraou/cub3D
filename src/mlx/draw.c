@@ -6,18 +6,76 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:36:43 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/04 17:46:04 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:50:42 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
+int horizontal_wall_length(char **map, int y_pos, int x_pos)
+{
+	int count;
+
+	count = 0;
+
+	while (map[y_pos][x_pos] == '1')
+	{
+		x_pos++;
+		count++;
+	}
+	return count;
+}
+
+int vertical_wall_length(char **map, int y_pos, int x_pos)
+{
+	int count;
+	int len;
+
+	count = 0;
+
+	while (map[y_pos] && map[y_pos][x_pos] == '1')
+	{
+		len = ft_strlen(map[y_pos]);
+		if (x_pos >= len)
+			break;
+		y_pos++;
+		count++;
+	}
+	return count;
+}
+
+void draw_horizontal_line(t_data *data, int color, int length, int x, int y)
+{
+	int i;
+
+	i = 0;
+	while (i < length)
+	{
+		ft_mlx_pixel_put(data, x, y, color);
+		x++;
+		i++;
+	}
+}
+
+void draw_vertical_line(t_data *data, int color, int length, int x, int y)
+{
+	int i;
+
+	i = 0;
+	while (i < length)
+	{
+		ft_mlx_pixel_put(data, x, y, color);
+		y++;
+		i++;
+	}
+}
+
 void draw(t_data *data, char **map)
 {
 	int x;
-	int start;
 	int y;
 	int s;
+	int len;
 
 	s = 20;
 	y = 0;
@@ -26,19 +84,20 @@ void draw(t_data *data, char **map)
 		x = 0;
 		while (map[y][x])
 		{
+
 			if (map[y][x] == '1')
 			{
-				start = x;
-				while (map[y][x] == '1')
-				{
-					x++;
-				}
-				draw_line(data, start, y, x, y, parse_color("255,255,255,255"));
+
+				len = horizontal_wall_length(map, y, x);
+				draw_horizontal_line(data, parse_color("255,255,255"), s * (len - 1), s * x, s * y);
+				len = vertical_wall_length(map, y, x);
+				draw_vertical_line(data, parse_color("255,255,255"), s * (len - 1), s * x, s * y);
 			}
 			else
-				ft_mlx_pixel_put(data, x * s, y * s, parse_color("0,0,0"));
+				printf("*");
 			x++;
 		}
+		printf("\n");
 		y++;
 	}
 }
