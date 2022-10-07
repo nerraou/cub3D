@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:36:43 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/05 15:50:42 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/10/07 13:58:11 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,15 @@ int horizontal_wall_length(char **map, int y_pos, int x_pos)
 	return count;
 }
 
-int vertical_wall_length(char **map, int y_pos, int x_pos)
+int vertical_wall_length(char **map, int *length, int y_pos, int x_pos)
 {
 	int count;
-	int len;
 
 	count = 0;
 
 	while (map[y_pos] && map[y_pos][x_pos] == '1')
 	{
-		len = ft_strlen(map[y_pos]);
-		if (x_pos >= len)
+		if (x_pos >= length[y_pos])
 			break;
 		y_pos++;
 		count++;
@@ -70,7 +68,7 @@ void draw_vertical_line(t_data *data, int color, int length, int x, int y)
 	}
 }
 
-void draw(t_data *data, char **map)
+void draw(t_data *data, char **map, int *length)
 {
 	int x;
 	int y;
@@ -90,7 +88,7 @@ void draw(t_data *data, char **map)
 
 				len = horizontal_wall_length(map, y, x);
 				draw_horizontal_line(data, parse_color("255,255,255"), s * (len - 1), s * x, s * y);
-				len = vertical_wall_length(map, y, x);
+				len = vertical_wall_length(map, length, y, x);
 				draw_vertical_line(data, parse_color("255,255,255"), s * (len - 1), s * x, s * y);
 			}
 			else

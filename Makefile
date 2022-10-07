@@ -46,6 +46,7 @@ SRC = \
 	src/map/set_south_texture.c\
 	src/map/set_west_texture.c\
 	src/map/set_player_orientation.c\
+	src/map/set_line_length.c\
 	src/map/set_colors.c\
 	src/map/set_ceiling_color.c\
 	src/map/set_floor_color.c\
