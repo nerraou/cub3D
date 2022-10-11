@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mlx_pixel_put.c                                 :+:      :+:    :+:   */
+/*   draw_rect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 15:09:46 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/10 22:04:21 by ybahlaou         ###   ########.fr       */
+/*   Created: 2022/10/10 20:25:38 by ybahlaou          #+#    #+#             */
+/*   Updated: 2022/10/10 22:02:50 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-void ft_mlx_pixel_put(t_data *data, int x, int y)
+void draw_rect(t_data *data, int x, int y, int width, int height)
 {
-	char *dst;
+    int dx;
 
-	if (x >= data->width || y >= data->height || x < 0 || y < 0)
-		return;
-	dst = data->addr + (y * data->line_length + x * 4);
-	*(unsigned int *)dst = data->current_fill;
+    height += y;
+    width += x;
+    while (y <= height)
+    {
+        dx = x;
+        while (dx < width)
+        {
+            ft_mlx_pixel_put(data, dx, y);
+            dx++;
+        }
+        y++;
+    }
 }

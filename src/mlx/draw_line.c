@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:56:41 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/04 18:47:18 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/10/10 22:04:49 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-void draw_line(t_data *data, int beginX, int beginY, int endX, int endY, int color)
+void draw_line(t_data *data, int beginX, int beginY, int endX, int endY)
 {
 	double deltaX = endX - beginX;
 	double deltaY = endY - beginY;
@@ -23,7 +23,7 @@ void draw_line(t_data *data, int beginX, int beginY, int endX, int endY, int col
 	double pixelY = beginY;
 	while (pixels)
 	{
-		ft_mlx_pixel_put(data, 20 * pixelX, 20 * pixelY, color);
+		ft_mlx_pixel_put(data, 20 * pixelX, 20 * pixelY);
 		pixelX += deltaX;
 		pixelY += deltaY;
 		--pixels;

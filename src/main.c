@@ -50,7 +50,7 @@ int main(void)
 	print_color("F", data.floor_color);
 	print_map(data.map_array, list->size);
 	ft_init(&window_data, &mlx);
-	draw(&window_data, data.map_array, data.length);
+	draw(&window_data, data.map_array);
 	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, window_data.img, 0, 0);
 	mlx_key_hook(mlx.mlx_win, esc_hook, &mlx);
 	mlx_loop(mlx.mlx);

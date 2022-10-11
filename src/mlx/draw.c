@@ -3,77 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:36:43 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/07 13:58:11 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/10/11 10:23:00 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-int horizontal_wall_length(char **map, int y_pos, int x_pos)
+static int get_color(char cell_value)
 {
-	int count;
-
-	count = 0;
-
-	while (map[y_pos][x_pos] == '1')
-	{
-		x_pos++;
-		count++;
-	}
-	return count;
+	if (cell_value == '1')
+		return 0xFFFFFF;
+	else if (cell_value == ' ' || cell_value == '0')
+		return 0x000000;
+	return 0xFFAA00;
 }
 
-int vertical_wall_length(char **map, int *length, int y_pos, int x_pos)
-{
-	int count;
-
-	count = 0;
-
-	while (map[y_pos] && map[y_pos][x_pos] == '1')
-	{
-		if (x_pos >= length[y_pos])
-			break;
-		y_pos++;
-		count++;
-	}
-	return count;
-}
-
-void draw_horizontal_line(t_data *data, int color, int length, int x, int y)
-{
-	int i;
-
-	i = 0;
-	while (i < length)
-	{
-		ft_mlx_pixel_put(data, x, y, color);
-		x++;
-		i++;
-	}
-}
-
-void draw_vertical_line(t_data *data, int color, int length, int x, int y)
-{
-	int i;
-
-	i = 0;
-	while (i < length)
-	{
-		ft_mlx_pixel_put(data, x, y, color);
-		y++;
-		i++;
-	}
-}
-
-void draw(t_data *data, char **map, int *length)
+void draw(t_data *data, char **map)
 {
 	int x;
 	int y;
 	int s;
-	int len;
 
 	s = 20;
 	y = 0;
@@ -82,20 +34,13 @@ void draw(t_data *data, char **map, int *length)
 		x = 0;
 		while (map[y][x])
 		{
-
+			fill(data, get_color(map[y][x]));
 			if (map[y][x] == '1')
-			{
-
-				len = horizontal_wall_length(map, y, x);
-				draw_horizontal_line(data, parse_color("255,255,255"), s * (len - 1), s * x, s * y);
-				len = vertical_wall_length(map, length, y, x);
-				draw_vertical_line(data, parse_color("255,255,255"), s * (len - 1), s * x, s * y);
-			}
-			else
-				printf("*");
+				draw_rect(data, x * s, y * s, s, s);
+			else if (ft_indexof("NSEW", map[y][x]) != -1)
+				draw_rect(data, x * s + 5, y * s + 5, 10, 10);
 			x++;
 		}
-		printf("\n");
 		y++;
 	}
 }

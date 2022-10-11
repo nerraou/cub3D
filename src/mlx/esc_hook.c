@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   esc_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:05:14 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/04 11:36:25 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/10/10 21:57:38 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int esc_hook(int keycode, t_mlx *mlx)
 {
-	if (keycode == 53)
+	if (keycode == ESC_KEY)
 	{
 		mlx_destroy_window(mlx->mlx, mlx->mlx_win);
 		exit(0);

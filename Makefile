@@ -59,6 +59,8 @@ SRC = \
 	src/mlx/ft_mlx_pixel_put.c\
 	src/mlx/draw.c\
 	src/mlx/draw_line.c\
+	src/mlx/draw_rect.c\
+	src/mlx/fill.c\
 \
 	src/debug/debug.c\
 \

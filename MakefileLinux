@@ -46,12 +46,21 @@ SRC = \
 	src/map/set_south_texture.c\
 	src/map/set_west_texture.c\
 	src/map/set_player_orientation.c\
+	src/map/set_line_length.c\
 	src/map/set_colors.c\
 	src/map/set_ceiling_color.c\
 	src/map/set_floor_color.c\
 	src/map/parse_color.c\
 	src/map/init_map.c\
 	src/map/has_header.c\
+\
+	src/mlx/esc_hook.c\
+	src/mlx/ft_init.c\
+	src/mlx/ft_mlx_pixel_put.c\
+	src/mlx/draw.c\
+	src/mlx/draw_line.c\
+	src/mlx/draw_rect.c\
+	src/mlx/fill.c\
 \
 	src/debug/debug.c\
 \
