@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.h                                           :+:      :+:    :+:   */
+/*   player_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 11:15:31 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/11 17:57:27 by nerraou          ###   ########.fr       */
+/*   Created: 2022/10/11 17:43:03 by nerraou           #+#    #+#             */
+/*   Updated: 2022/10/11 18:05:09 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_H
-#define PLAYER_H
+#include "player.h"
 
-#define PI 3.141592653589793238
-typedef struct s_player
+void player_init(t_player *player)
 {
-	int x;
-	int y;
-	int turn_direction;
-	int walk_direction;
-	float rotation_angle;
-	int move_speed;
-	float rotation_speed;
-} t_player;
 
-#endif
+	player->turn_direction = 0;
+	player->walk_direction = 0;
+	player->move_speed = 3;
+	player->rotation_angle = (PI / 2);
+	player->rotation_speed = 3 * (PI / 180);
+}
