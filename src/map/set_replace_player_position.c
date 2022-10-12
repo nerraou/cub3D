@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.h                                           :+:      :+:    :+:   */
+/*   set_replace_player_position.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 11:15:31 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/12 15:56:39 by nerraou          ###   ########.fr       */
+/*   Created: 2022/10/12 11:53:32 by nerraou           #+#    #+#             */
+/*   Updated: 2022/10/12 18:11:47 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_H
-#define PLAYER_H
+#include "map.h"
 
-#include <math.h>
-
-typedef struct s_player
+void set_replace_player_position(t_map *data)
 {
 	int x;
 	int y;
-	int turn_direction;
-	int walk_direction;
-	float rotation_angle;
-	int move_speed;
-	float rotation_speed;
-} t_player;
 
-void player_init(t_player *player, char oriontation);
-
-#endif
+	y = 0;
+	while (data->map_array[y])
+	{
+		x = 0;
+		while (data->map_array[y][x])
+		{
+			if (ft_indexof("NEWS", data->map_array[y][x]) != -1)
+			{
+				data->player_orientation = data->map_array[y][x];
+				data->player.x = x;
+				data->player.y = y;
+				data->map_array[y][x] = '0';
+				break;
+			}
+			x++;
+		}
+		y++;
+	}
+}

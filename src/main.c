@@ -3,6 +3,7 @@
 #include "get_next_line.h"
 #include "map.h"
 #include "debug.h"
+#include "player.h"
 #include "ft_mlx.h"
 
 int main(void)
@@ -13,7 +14,7 @@ int main(void)
 	char *line;
 	t_map data;
 	t_list *list;
-
+	window_data.scale = 20;
 	init_map(&data);
 	int fd = open("./test-maps/map1.cub", O_RDONLY);
 	list = list_new();
@@ -24,7 +25,6 @@ int main(void)
 		{
 			if (line[0] != '\0')
 			{
-				set_player_orientation(line, &data);
 				add_back(list, (void *)line);
 			}
 			else
@@ -40,7 +40,8 @@ int main(void)
 	}
 	data.map_array = list_to_array(list);
 	set_line_length(&data.length, data.map_array, list->size);
-
+	set_replace_player_position(&data);
+	player_init(&data.player, data.player_orientation);
 	printf("%s\n", data.so_wall_texture);
 	printf("%s\n", data.we_wall_texture);
 	printf("%s\n", data.no_wall_texture);
@@ -49,8 +50,10 @@ int main(void)
 	print_color("C", data.ceiling_color);
 	print_color("F", data.floor_color);
 	print_map(data.map_array, list->size);
+	printf("player position = %c \n x = %d \n y = %d \n", data.player_orientation, data.player.x, data.player.y);
 	ft_init(&window_data, &mlx);
-	draw(&window_data, data.map_array);
+	draw_minimap(&window_data, data.map_array);
+	draw_player(&window_data, &data.player);
 	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, window_data.img, 0, 0);
 	mlx_key_hook(mlx.mlx_win, esc_hook, &mlx);
 	mlx_loop(mlx.mlx);
