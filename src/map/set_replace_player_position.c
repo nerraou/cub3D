@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_to_array.c                                    :+:      :+:    :+:   */
+/*   set_replace_player_position.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 08:22:20 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/04 14:41:37 by nerraou          ###   ########.fr       */
+/*   Created: 2022/10/12 11:53:32 by nerraou           #+#    #+#             */
+/*   Updated: 2022/10/12 18:11:47 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "map.h"
 
-char **list_to_array(const t_list *list)
+void set_replace_player_position(t_map *data)
 {
-	t_element *cur;
-	char **array;
-	int i;
+	int x;
+	int y;
 
-	array = (char **)malloc(sizeof(char *) * (list->size + 1));
-	cur = list->head;
-	i = 0;
-	while (cur != NULL)
+	y = 0;
+	while (data->map_array[y])
 	{
-		array[i] = (char *)cur->content;
-		cur = cur->next;
-		i++;
+		x = 0;
+		while (data->map_array[y][x])
+		{
+			if (ft_indexof("NEWS", data->map_array[y][x]) != -1)
+			{
+				data->player_orientation = data->map_array[y][x];
+				data->player.x = x;
+				data->player.y = y;
+				data->map_array[y][x] = '0';
+				break;
+			}
+			x++;
+		}
+		y++;
 	}
-	array[i] = NULL;
-	return (array);
 }

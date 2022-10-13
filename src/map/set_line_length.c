@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_to_array.c                                    :+:      :+:    :+:   */
+/*   set_line_length.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 08:22:20 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/04 14:41:37 by nerraou          ###   ########.fr       */
+/*   Created: 2022/10/07 10:33:50 by nerraou           #+#    #+#             */
+/*   Updated: 2022/10/07 14:25:27 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list.h"
 
-char **list_to_array(const t_list *list)
+void set_line_length(int **length, char **map, int size)
 {
-	t_element *cur;
-	char **array;
+	*length = (int *)malloc(sizeof(int) * size);
+	if (!*length)
+		return;
 	int i;
 
-	array = (char **)malloc(sizeof(char *) * (list->size + 1));
-	cur = list->head;
 	i = 0;
-	while (cur != NULL)
+	while (map[i])
 	{
-		array[i] = (char *)cur->content;
-		cur = cur->next;
+		(*length)[i] = ft_strlen(map[i]);
 		i++;
 	}
-	array[i] = NULL;
-	return (array);
 }

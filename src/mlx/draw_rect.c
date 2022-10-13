@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_player_orientation.c                           :+:      :+:    :+:   */
+/*   draw_rect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 21:58:36 by ybahlaou          #+#    #+#             */
-/*   Updated: 2022/09/30 22:03:08 by ybahlaou         ###   ########.fr       */
+/*   Created: 2022/10/10 20:25:38 by ybahlaou          #+#    #+#             */
+/*   Updated: 2022/10/10 22:02:50 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "ft_mlx.h"
 
-void set_player_orientation(const char *str, t_map *map)
+void draw_rect(t_data *data, int x, int y, int width, int height)
 {
-	int i;
+    int dx;
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (ft_indexof("NSEW", str[i]) != -1)
-		{
-			map->player_orientation = str[i];
-			break;
-		}
-		i++;
-	}
+    height += y;
+    width += x;
+    while (y <= height)
+    {
+        dx = x;
+        while (dx < width)
+        {
+            ft_mlx_pixel_put(data, dx, y);
+            dx++;
+        }
+        y++;
+    }
 }

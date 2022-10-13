@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_to_array.c                                    :+:      :+:    :+:   */
+/*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 08:22:20 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/04 14:41:37 by nerraou          ###   ########.fr       */
+/*   Created: 2022/10/03 11:15:31 by nerraou           #+#    #+#             */
+/*   Updated: 2022/10/12 15:56:39 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#ifndef PLAYER_H
+#define PLAYER_H
 
-char **list_to_array(const t_list *list)
+#include <math.h>
+
+typedef struct s_player
 {
-	t_element *cur;
-	char **array;
-	int i;
+	int x;
+	int y;
+	int turn_direction;
+	int walk_direction;
+	float rotation_angle;
+	int move_speed;
+	float rotation_speed;
+} t_player;
 
-	array = (char **)malloc(sizeof(char *) * (list->size + 1));
-	cur = list->head;
-	i = 0;
-	while (cur != NULL)
-	{
-		array[i] = (char *)cur->content;
-		cur = cur->next;
-		i++;
-	}
-	array[i] = NULL;
-	return (array);
-}
+void player_init(t_player *player, char oriontation);
+
+#endif

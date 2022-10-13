@@ -1,6 +1,6 @@
 NAME = cub3D
 FLAGS = -Wall -Wextra -Werror -Imlx
-HEADERS = $(addprefix $(INCLUDES_PATH)/,list.h libft.h get_next_line.h map.h debug.h)
+HEADERS = $(addprefix $(INCLUDES_PATH)/,list.h libft.h get_next_line.h map.h player.h debug.h ft_mlx.h)
 
 SRC = \
 	src/libft/ft_atoi.c\
@@ -45,13 +45,25 @@ SRC = \
 	src/map/set_north_texture.c\
 	src/map/set_south_texture.c\
 	src/map/set_west_texture.c\
-	src/map/set_player_orientation.c\
+	src/map/set_line_length.c\
 	src/map/set_colors.c\
 	src/map/set_ceiling_color.c\
 	src/map/set_floor_color.c\
 	src/map/parse_color.c\
 	src/map/init_map.c\
+	src/map/set_replace_player_position.c\
 	src/map/has_header.c\
+\
+	src/mlx/esc_hook.c\
+	src/mlx/ft_init.c\
+	src/mlx/ft_mlx_pixel_put.c\
+	src/mlx/draw_minimap.c\
+	src/mlx/draw_player.c\
+	src/mlx/draw_line.c\
+	src/mlx/draw_rect.c\
+	src/mlx/fill.c\
+\
+	src/player/player_init.c\
 \
 	src/debug/debug.c\
 \
