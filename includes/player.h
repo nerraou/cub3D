@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 11:15:31 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/12 15:56:39 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/10/15 17:24:08 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 typedef struct s_player
 {
-	int x;
-	int y;
+	float x;
+	float y;
 	int turn_direction;
 	int walk_direction;
 	float rotation_angle;
