@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   esc_hook.c                                         :+:      :+:    :+:   */
+/*   is_wall.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 17:05:14 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/17 15:47:05 by nerraou          ###   ########.fr       */
+/*   Created: 2022/10/17 16:06:06 by nerraou           #+#    #+#             */
+/*   Updated: 2022/10/17 18:40:00 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_mlx.h"
+#include "map.h"
 
-void esc_hook(t_data *data)
+int is_wall(int x, int y, int scale, char **map)
 {
+	int mapX;
+	int mapY;
 
-	mlx_destroy_window(data->mlx, data->mlx_win);
-	exit(0);
+	mapX = (x / scale);
+	mapY = (y / scale);
+	if (map[mapY] != NULL)
+	{
+		if (map[mapY][mapX] == '1')
+			return 1;
+	}
+	return 0;
 }

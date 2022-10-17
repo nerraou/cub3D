@@ -44,9 +44,8 @@ int main(void)
 	}
 	map.map_array = list_to_array(list);
 	set_line_length(&map.length, map.map_array, list->size);
-	set_replace_player_position(&map);
+	set_replace_player_position(&map, window_data.scale);
 	player_init(&map.player, map.player_orientation);
-	mlx_key_hook(window_data.mlx_win, esc_hook, &window_data);
 	mlx_key_down_hook(window_data.mlx_win, on_key_down, &event_data);
 	mlx_key_up_hook(window_data.mlx_win, on_key_up, &event_data);
 	mlx_loop_hook(window_data.mlx, update_loop, &event_data);

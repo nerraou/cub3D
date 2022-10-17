@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:53:02 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/17 10:39:13 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/10/17 16:36:38 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_event_data
 
 void ft_mlx_pixel_put(t_data *data, int x, int y);
 void ft_init(t_data *data);
-int esc_hook(int keycode, t_data *mlx);
+void esc_hook(t_data *mlx);
 void draw_minimap(t_data *data, char **map);
 void draw_line(t_data *data, int beginX, int beginY, int endX, int endY);
 void draw_rect(t_data *data, int x, int y, int width, int height);

@@ -53,6 +53,7 @@ SRC = \
 	src/map/init_map.c\
 	src/map/set_replace_player_position.c\
 	src/map/has_header.c\
+	src/map/is_wall.c\
 \
 	src/mlx/esc_hook.c\
 	src/mlx/ft_init.c\
