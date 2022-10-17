@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   esc_hook.c                                         :+:      :+:    :+:   */
+/*   mlx_key_up_hook.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 17:05:14 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/15 13:26:55 by ybahlaou         ###   ########.fr       */
+/*   Created: 2022/10/17 10:31:59 by nerraou           #+#    #+#             */
+/*   Updated: 2022/10/17 10:32:18 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-int esc_hook(int keycode, t_data *data)
+int mlx_key_up_hook(void *win_ptr, int (*handler)(), void *param)
 {
-	if (keycode == ESC_KEY)
-	{
-		mlx_destroy_window(data->mlx, data->mlx_win);
-		exit(0);
-	}
-	return (0);
+	return mlx_hook(win_ptr, 03, 1L << 1, handler, param);
 }

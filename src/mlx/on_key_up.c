@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   esc_hook.c                                         :+:      :+:    :+:   */
+/*   on_key_up.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 17:05:14 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/15 13:26:55 by ybahlaou         ###   ########.fr       */
+/*   Created: 2022/10/17 10:35:50 by nerraou           #+#    #+#             */
+/*   Updated: 2022/10/17 10:36:19 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-int esc_hook(int keycode, t_data *data)
+int on_key_up(int keycode, t_event_data *e)
 {
-	if (keycode == ESC_KEY)
-	{
-		mlx_destroy_window(data->mlx, data->mlx_win);
-		exit(0);
-	}
+	if (keycode == UP_ARROW_KEY || keycode == DOWN_ARROW_KEY)
+		e->map->player.walk_direction = 0;
+	else if (keycode == RIGHT_ARROW_KEY || keycode == LEFT_ARROW_KEY)
+		e->map->player.turn_direction = 0;
 	return (0);
 }
