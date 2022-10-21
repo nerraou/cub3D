@@ -5,6 +5,7 @@
 #include "debug.h"
 #include "player.h"
 #include "ft_mlx.h"
+#include "ray.h"
 
 int main(void)
 {
@@ -14,12 +15,18 @@ int main(void)
 	char *line;
 	t_map map;
 	t_list *list;
+	t_ray ray;
 
 	event_data.data = &window_data;
 	event_data.map = &map;
 
 	ft_init(&window_data);
 	init_map(&map);
+
+	ray.fov_angle = 60.0f * (M_PI / 180.0f);
+	ray.wall_width = 1;
+	ray.num_rays = window_data.width / ray.wall_width;
+
 	int fd = open("./test-maps/map1.cub", O_RDONLY);
 	list = list_new();
 	line = get_next_line(fd);
