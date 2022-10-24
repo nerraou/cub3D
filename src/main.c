@@ -19,13 +19,10 @@ int main(void)
 
 	event_data.data = &window_data;
 	event_data.map = &map;
-
+	event_data.ray = &ray;
 	ft_init(&window_data);
 	init_map(&map);
-
-	ray.fov_angle = 60.0f * (M_PI / 180.0f);
-	ray.wall_width = 1;
-	ray.num_rays = window_data.width / ray.wall_width;
+	init_ray(&ray);
 
 	int fd = open("./test-maps/map1.cub", O_RDONLY);
 	list = list_new();
