@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:53:02 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/24 16:22:48 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/10/27 16:47:03 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ int mlx_key_up_hook(void *win_ptr, int (*handler)(), void *param);
 int on_key_down(int keycode, t_event_data *e);
 int on_key_up(int keycode, t_event_data *e);
 int update_loop(t_event_data *e);
-void draw_rays(t_data *data, t_ray *ray, t_player *player);
+void draw_rays(t_data *data, t_ray *ray, t_map *map);
 
 #endif

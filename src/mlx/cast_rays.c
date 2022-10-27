@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_ray.c                                         :+:      :+:    :+:   */
+/*   cast_rays.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 16:12:26 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/25 14:56:22 by nerraou          ###   ########.fr       */
+/*   Created: 2022/10/27 14:05:52 by nerraou           #+#    #+#             */
+/*   Updated: 2022/10/27 18:46:29 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ray.h"
+#include "ft_mlx.h"
 
-void init_ray(t_ray *ray)
+
+int first_intersaction_point()
 {
-	ray->fov_angle = 60.0f * (M_PI / 180.0f);
-	ray->wall_width = 1;
-	ray->num_rays = (32 * 20) / ray->wall_width;
+
+}
+
+void cast_rays(float angle,t_player *player,int scale)
+{
+	
 }
