@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:12:26 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/25 14:56:22 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/10/29 14:05:22 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ void init_ray(t_ray *ray)
 {
 	ray->fov_angle = 60.0f * (M_PI / 180.0f);
 	ray->wall_width = 1;
-	ray->num_rays = (32 * 20) / ray->wall_width;
+	ray->num_rays = (34 * 20) / ray->wall_width;
 }
