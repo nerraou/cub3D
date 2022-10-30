@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_rect.c                                        :+:      :+:    :+:   */
+/*   init_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 20:25:38 by ybahlaou          #+#    #+#             */
-/*   Updated: 2022/10/25 17:38:13 by nerraou          ###   ########.fr       */
+/*   Created: 2022/10/24 16:12:26 by nerraou           #+#    #+#             */
+/*   Updated: 2022/10/29 14:05:22 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_mlx.h"
+#include "ray.h"
 
-void draw_rect(t_data *data, int x, int y, int width, int height)
+void init_ray(t_ray *ray)
 {
-	int dx;
-
-	height += y;
-	width += x;
-	while (y <= height)
-	{
-		dx = x;
-		while (dx < width)
-		{
-			ft_mlx_pixel_put(data, dx, y);
-			dx++;
-		}
-		y++;
-	}
+	ray->fov_angle = 60.0f * (M_PI / 180.0f);
+	ray->wall_width = 1;
+	ray->num_rays = (34 * 20) / ray->wall_width;
 }

@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_rect.c                                        :+:      :+:    :+:   */
+/*   is_wall.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 20:25:38 by ybahlaou          #+#    #+#             */
-/*   Updated: 2022/10/25 17:38:13 by nerraou          ###   ########.fr       */
+/*   Created: 2022/10/17 16:06:06 by nerraou           #+#    #+#             */
+/*   Updated: 2022/10/17 18:40:00 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_mlx.h"
+#include "map.h"
 
-void draw_rect(t_data *data, int x, int y, int width, int height)
+int is_wall(int x, int y, int scale, char **map)
 {
-	int dx;
+	int mapX;
+	int mapY;
 
-	height += y;
-	width += x;
-	while (y <= height)
+	mapX = (x / scale);
+	mapY = (y / scale);
+	if (map[mapY] != NULL)
 	{
-		dx = x;
-		while (dx < width)
-		{
-			ft_mlx_pixel_put(data, dx, y);
-			dx++;
-		}
-		y++;
+		if (map[mapY][mapX] == '1')
+			return 1;
 	}
+	return 0;
 }

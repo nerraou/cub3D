@@ -61,6 +61,7 @@ SRC = \
 	src/mlx/draw_player.c\
 	src/mlx/draw_line.c\
 	src/mlx/draw_rect.c\
+	src/mlx/draw_rays.c\
 	src/mlx/draw_circle.c\
 	src/mlx/mlx_key_down_hook.c\
 	src/mlx/mlx_key_up_hook.c\
@@ -70,6 +71,9 @@ SRC = \
 	src/mlx/fill.c\
 \
 	src/player/player_init.c\
+\
+\
+	src/ray/init_ray.c\
 \
 	src/debug/debug.c\
 \

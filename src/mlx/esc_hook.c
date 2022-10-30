@@ -3,21 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   esc_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:05:14 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/15 13:26:55 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/10/17 15:47:05 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-int esc_hook(int keycode, t_data *data)
+void esc_hook(t_data *data)
 {
-	if (keycode == ESC_KEY)
-	{
-		mlx_destroy_window(data->mlx, data->mlx_win);
-		exit(0);
-	}
-	return (0);
+
+	mlx_destroy_window(data->mlx, data->mlx_win);
+	exit(0);
 }

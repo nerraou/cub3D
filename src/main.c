@@ -5,6 +5,7 @@
 #include "debug.h"
 #include "player.h"
 #include "ft_mlx.h"
+#include "ray.h"
 
 int main(void)
 {
@@ -14,12 +15,15 @@ int main(void)
 	char *line;
 	t_map map;
 	t_list *list;
+	t_ray ray;
 
 	event_data.data = &window_data;
 	event_data.map = &map;
-
+	event_data.ray = &ray;
 	ft_init(&window_data);
 	init_map(&map);
+	init_ray(&ray);
+
 	int fd = open("./test-maps/map1.cub", O_RDONLY);
 	list = list_new();
 	line = get_next_line(fd);
@@ -44,9 +48,8 @@ int main(void)
 	}
 	map.map_array = list_to_array(list);
 	set_line_length(&map.length, map.map_array, list->size);
-	set_replace_player_position(&map);
+	set_replace_player_position(&map, window_data.scale);
 	player_init(&map.player, map.player_orientation);
-	mlx_key_hook(window_data.mlx_win, esc_hook, &window_data);
 	mlx_key_down_hook(window_data.mlx_win, on_key_down, &event_data);
 	mlx_key_up_hook(window_data.mlx_win, on_key_up, &event_data);
 	mlx_loop_hook(window_data.mlx, update_loop, &event_data);
