@@ -1,6 +1,6 @@
 NAME = cub3D
 FLAGS = -Wall -Wextra -Werror
-HEADERS = $(addprefix $(INCLUDES_PATH)/,list.h libft.h get_next_line.h player.h debug.h map.h ft_mlx.h)
+HEADERS = $(addprefix $(INCLUDES_PATH)/,list.h libft.h get_next_line.h player.h debug.h map.h ft_mlx.h ray.h vector2.h)
 
 SRC = \
 	src/libft/ft_atoi.c\
@@ -53,6 +53,7 @@ SRC = \
 	src/map/parse_color.c\
 	src/map/init_map.c\
 	src/map/has_header.c\
+	src/map/is_wall.c\
 \
 	src/mlx/esc_hook.c\
 	src/mlx/ft_init.c\
@@ -72,8 +73,11 @@ SRC = \
 \
 	src/player/player_init.c\
 \
-\
 	src/ray/init_ray.c\
+\
+	src/vector2/vector2_set.c\
+	src/vector2/vector2_set_x.c\
+	src/vector2/vector2_set_y.c\
 \
 	src/debug/debug.c\
 \
