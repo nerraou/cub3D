@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_map.c                                         :+:      :+:    :+:   */
+/*   distance.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 08:16:50 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/31 18:06:00 by nerraou          ###   ########.fr       */
+/*   Created: 2022/11/01 16:25:00 by nerraou           #+#    #+#             */
+/*   Updated: 2022/11/01 16:25:20 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "libft.h"
 
-void init_map(t_map *map)
+float distance(float start_x, float start_y, float end_x, float end_y)
 {
-	ft_memset(map, 0, sizeof(t_map));
-	map->ceiling_color = -1;
-	map->floor_color = -1;
-	map->scale = 20;
+	return sqrtf(powf(end_x - start_x, 2.0f) + powf(end_y - start_y, 2.0f));
 }

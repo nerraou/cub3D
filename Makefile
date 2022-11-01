@@ -29,6 +29,8 @@ SRC = \
 	src/libft/ft_putendl_fd.c\
 	src/libft/ft_split.c\
 	src/libft/ft_tolower.c\
+	src/libft/distance.c\
+	src/libft/normalize_angle.c\
 \
 	src/gnl/get_next_line_utils.c\
 	src/gnl/get_next_line.c\
@@ -70,6 +72,11 @@ SRC = \
 	src/mlx/on_key_down.c\
 	src/mlx/update_loop.c\
 	src/mlx/fill.c\
+	src/mlx/set_horizontal_coords.c\
+	src/mlx/set_vertical_coords.c\
+	src/mlx/vertical_wall_intercept.c\
+	src/mlx/horizontal_wall_intercept.c\
+	src/mlx/cast_ray.c\
 \
 	src/player/player_init.c\
 \

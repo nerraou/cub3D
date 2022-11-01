@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:34:38 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/28 15:06:57 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/01 16:39:45 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <limits.h>
+#include <math.h>
 
 int ft_strncmp(const char *s1, const char *s2, size_t n);
 int ft_strcmp(const char *s1, const char *s2);
@@ -53,4 +54,6 @@ void ft_putstr_fd(char *s, int fd);
 
 long ft_atol(const char *str);
 
+float distance(float start_x, float start_y, float end_x, float end_y);
+float normalize_angle(float angle);
 #endif
