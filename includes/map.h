@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:13:23 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/17 19:17:02 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/10/31 18:04:52 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_map
 	int floor_color;
 	int ceiling_color;
 	int *length;
+	int scale;
 	t_player player;
 } t_map;
 

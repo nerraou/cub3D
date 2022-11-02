@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:53:02 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/27 16:47:03 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/01 16:28:30 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 
 #include <mlx.h>
 #include <stdlib.h>
-#include "map.h"
 #include <math.h>
+#include <limits.h>
+
+#include "vector2.h"
+#include "libft.h"
 #include "ray.h"
+#include "map.h"
 
 #define ESC_KEY 53
 #define UP_ARROW_KEY 126
@@ -60,11 +64,20 @@ void draw_rect(t_data *data, int x, int y, int width, int height);
 void draw_circle(t_data *data, int x0, int y0, int radius);
 void fill(t_data *data, int color);
 void draw_player(t_data *data, const t_player *player);
+void draw_rays(t_data *data, t_ray *ray, t_map *map);
+
 int mlx_key_down_hook(void *win_ptr, int (*handler)(), void *param);
 int mlx_key_up_hook(void *win_ptr, int (*handler)(), void *param);
 int on_key_down(int keycode, t_event_data *e);
 int on_key_up(int keycode, t_event_data *e);
 int update_loop(t_event_data *e);
-void draw_rays(t_data *data, t_ray *ray, t_map *map);
+
+void set_horizontal_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, float angle);
+void set_vertical_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, float angle);
+
+int horizontal_wall_intercept(t_data *data, t_map *map, t_vector2 *intercept, float angle);
+int vertical_wall_intercept(t_data *data, t_map *map, t_vector2 *intercept, float angle);
+
+void cast_ray(t_data *data, t_map *map, float angle);
 
 #endif

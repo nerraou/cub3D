@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_map.c                                         :+:      :+:    :+:   */
+/*   normalize_angle.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 08:16:50 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/31 18:06:00 by nerraou          ###   ########.fr       */
+/*   Created: 2022/11/01 16:22:50 by nerraou           #+#    #+#             */
+/*   Updated: 2022/11/01 16:23:06 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "ft_mlx.h"
 
-void init_map(t_map *map)
+float normalize_angle(float angle)
 {
-	ft_memset(map, 0, sizeof(t_map));
-	map->ceiling_color = -1;
-	map->floor_color = -1;
-	map->scale = 20;
+	angle = fmodf(angle, (2.0f * (float)M_PI));
+	if (angle < 0)
+		angle += (2 * M_PI);
+	return angle;
 }
