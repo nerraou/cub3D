@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:53:02 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/01 16:28:30 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/09 18:25:20 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,6 @@ void set_vertical_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, floa
 int horizontal_wall_intercept(t_data *data, t_map *map, t_vector2 *intercept, float angle);
 int vertical_wall_intercept(t_data *data, t_map *map, t_vector2 *intercept, float angle);
 
-void cast_ray(t_data *data, t_map *map, float angle);
+float cast_ray(t_data *data, t_map *map, float angle, int *horizontal);
 
 #endif

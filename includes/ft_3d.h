@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_ray.c                                         :+:      :+:    :+:   */
+/*   ft_3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 16:12:26 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/09 17:54:05 by nerraou          ###   ########.fr       */
+/*   Created: 2022/11/08 13:35:01 by nerraou           #+#    #+#             */
+/*   Updated: 2022/11/08 15:01:29 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ray.h"
+#ifndef FT_3D_H
+#define FT_3D_H
+#include "ft_mlx.h"
 
-void init_ray(t_ray *ray)
-{
-	ray->fov_angle = 60.0f * (M_PI / 180.0f);
-	ray->wall_width = 1;
-	ray->num_rays = (34 * 20) / ray->wall_width;
-}
+void render_3d_projection_wall(t_data *data, t_map *map, t_ray *ray, float distance);
+
+#endif
