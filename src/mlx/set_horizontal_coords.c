@@ -6,13 +6,13 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:10:09 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/01 16:15:10 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/10 18:04:05 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-void set_horizontal_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, float angle)
+int set_horizontal_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, float angle)
 {
 	int is_ray_facing_down;
 	int is_ray_facing_right;
@@ -33,5 +33,6 @@ void set_horizontal_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, fl
 	else if (is_ray_facing_right && step->x < 0)
 		step->x *= -1;
 	if (!is_ray_facing_down)
-		intercept->y--;
+		return 1;
+	return 0;
 }
