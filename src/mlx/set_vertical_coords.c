@@ -6,13 +6,13 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:18:14 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/01 16:19:19 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/10 18:11:51 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-void set_vertical_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, float angle)
+int set_vertical_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, float angle)
 {
 	int is_ray_facing_down;
 	int is_ray_facing_right;
@@ -32,5 +32,6 @@ void set_vertical_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, floa
 	else if (is_ray_facing_down && step->y < 0)
 		step->y *= -1;
 	if (!is_ray_facing_right)
-		intercept->x--;
+		return 1;
+	return 0;
 }

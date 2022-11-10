@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:53:02 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/09 18:25:20 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/10 18:12:10 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ int on_key_down(int keycode, t_event_data *e);
 int on_key_up(int keycode, t_event_data *e);
 int update_loop(t_event_data *e);
 
-void set_horizontal_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, float angle);
-void set_vertical_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, float angle);
+int set_horizontal_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, float angle);
+int set_vertical_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, float angle);
 
 int horizontal_wall_intercept(t_data *data, t_map *map, t_vector2 *intercept, float angle);
 int vertical_wall_intercept(t_data *data, t_map *map, t_vector2 *intercept, float angle);
