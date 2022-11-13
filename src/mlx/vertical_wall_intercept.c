@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:21:17 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/10 18:11:55 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/13 13:57:32 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int vertical_wall_intercept(t_data *data, t_map *map, t_vector2 *intercept, floa
 	t_vector2 step;
 	int in;
 	in = set_vertical_coords(&step, intercept, map, angle);
-	while (intercept->x >= 0 && intercept->x <= 34 * 20 && intercept->y >= 0 && intercept->y <= 14 * 20)
+	while (intercept->x >= 0 && intercept->x <= 34 * map->scale && intercept->y >= 0 && intercept->y <= 14 * map->scale)
 	{
 		if (is_wall(intercept->x - in, intercept->y, data->scale, map->map_array))
 		{

@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:25:38 by ybahlaou          #+#    #+#             */
-/*   Updated: 2022/10/25 17:38:13 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/13 17:32:13 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 void draw_rect(t_data *data, int x, int y, int width, int height)
 {
 	int dx;
+
+	x = x < 0 ? 0 : x;
+	y = y < 0 ? 0 : y;
 
 	height += y;
 	width += x;
