@@ -15,3 +15,7 @@ cub3D
 
 # Debug files
 *.dSYM/
+
+# tmp
+/tmp/
+/temp/

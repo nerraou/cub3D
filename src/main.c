@@ -37,16 +37,15 @@ int init_texture(t_data *data, t_map *map)
 	return 1;
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
 	t_event_data event_data;
 	t_data window_data;
-
-	char *line;
 	t_map map;
-	t_list *list;
 	t_ray ray;
 
+	if (argc != 2)
+		return 1;
 	event_data.data = &window_data;
 	event_data.map = &map;
 	event_data.ray = &ray;
@@ -59,36 +58,12 @@ int main(void)
 	}
 	init_ray(&ray);
 
-	int fd = open("./test-maps/map1.cub", O_RDONLY);
-	list = list_new();
-	line = get_next_line(fd);
-	while (line)
+	if (parse(argv[1], &map) == 0)
 	{
-		if (has_header(&map))
-		{
-			if (line[0] != '\0')
-			{
-				add_back(list, (void *)line);
-			}
-			else
-				free(line);
-		}
-		else
-		{
-			set_colors(line, &map);
-			set_map_textures(line, &map);
-			free(line);
-		}
-		line = get_next_line(fd);
+		mlx_key_down_hook(window_data.mlx_win, on_key_down, &event_data);
+		mlx_key_up_hook(window_data.mlx_win, on_key_up, &event_data);
+		mlx_loop_hook(window_data.mlx, update_loop, &event_data);
+		mlx_loop(window_data.mlx);
 	}
-	map.map_array = list_to_array(list);
-	set_line_length(&map.length, map.map_array, list->size);
-	set_replace_player_position(&map, window_data.scale);
-	player_init(&map.player, map.player_orientation);
-	mlx_key_down_hook(window_data.mlx_win, on_key_down, &event_data);
-	mlx_key_up_hook(window_data.mlx_win, on_key_up, &event_data);
-	// mlx_put_image_to_window(window_data.mlx, window_data.mlx_win, map.textures.ea, 50, 50);
-	mlx_loop_hook(window_data.mlx, update_loop, &event_data);
-	mlx_loop(window_data.mlx);
 	return 0;
 }

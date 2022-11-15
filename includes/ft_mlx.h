@@ -24,14 +24,19 @@
 #include "map.h"
 
 #define ESC_KEY 53
-#define UP_ARROW_KEY 126
-#define RIGHT_ARROW_KEY 124
-#define DOWN_ARROW_KEY 125
-#define LEFT_ARROW_KEY 123
+// #define UP_ARROW_KEY 126
+// #define RIGHT_ARROW_KEY 124
+// #define DOWN_ARROW_KEY 125
+// #define LEFT_ARROW_KEY 123
 #define W_KEY 13
 #define D_KEY 2
 #define S_KEY 1
 #define A_KEY 0
+
+#define UP_ARROW_KEY 65362
+#define RIGHT_ARROW_KEY 65363
+#define DOWN_ARROW_KEY 65364
+#define LEFT_ARROW_KEY 65361
 
 typedef struct s_data
 {

@@ -6,13 +6,14 @@
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:27:38 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/28 22:39:17 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/10 23:14:38 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-void set_floor_color(const char *line, t_map *map)
+int set_floor_color(const char *line, t_map *map)
 {
-    map->floor_color = parse_color(line + 1);
+    map->floor_color = rgb_from_string(line + 1);
+    return (0);
 }

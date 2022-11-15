@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:34:38 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/01 16:39:45 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/13 14:22:02 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ int wcount(char const *s, char c);
 int is_long(const char *str);
 int ft_tolower(int c);
 
+char *ft_strctrim(const char *str, char c);
+int ft_strendswith(const char *str, const char *sub);
+char *ft_strctrimend(const char *str, char c);
 char *ft_substr(char const *s, unsigned int start, size_t len);
 char *ft_strncpy(char *dest, const char *src, size_t n);
 char *ft_strdup(const char *s);

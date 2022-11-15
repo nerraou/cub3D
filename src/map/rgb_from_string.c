@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_replace_player_position.c                      :+:      :+:    :+:   */
+/*   rgb_from_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 11:53:32 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/14 23:16:22 by ybahlaou         ###   ########.fr       */
+/*   Created: 2022/09/28 17:18:10 by nerraou           #+#    #+#             */
+/*   Updated: 2022/11/10 22:07:21 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-int set_replace_player_position(t_map *data, int scale)
+int rgb_from_string(const char *str)
 {
-	int x;
-	int y;
+    int r;
+    int g;
+    int b;
+    int start_index;
 
-	y = 0;
-	while (data->map_array[y])
-	{
-		x = 0;
-		while (data->map_array[y][x])
-		{
-			if (ft_indexof("NEWS", data->map_array[y][x]) != -1)
-			{
-				data->player_orientation = data->map_array[y][x];
-				data->player.x = x * scale;
-				data->player.y = y * scale;
-				data->map_array[y][x] = '0';
-				return (0);
-			}
-			x++;
-		}
-		y++;
-	}
-	return (1);
+    r = ft_atoi(str);
+
+    start_index = ft_indexof(str, ',') + 1;
+    g = ft_atoi(str + start_index);
+
+    start_index = ft_indexof(str + start_index, ',') + 1;
+    b = ft_atoi(str + start_index);
+    return (r << 16 | g << 8 | b);
 }
