@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:13:23 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/31 18:04:52 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/16 19:50:23 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "libft.h"
 #include "list.h"
 #include "player.h"
+#include "texture.h"
 
 typedef struct s_map
 {
@@ -29,6 +30,7 @@ typedef struct s_map
 	int ceiling_color;
 	int *length;
 	int scale;
+	t_textures textures;
 	t_player player;
 } t_map;
 
