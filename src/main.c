@@ -16,6 +16,24 @@ int init_texture(t_data *data, t_map *map)
 	map->textures.ea.addr = mlx_get_data_addr(map->textures.ea.img, &map->textures.ea.bits_per_pixel, &map->textures.ea.line_length, &map->textures.ea.endian);
 	if (!map->textures.ea.addr)
 		return -1;
+	map->textures.we.img = mlx_xpm_file_to_image(data->mlx, "./assets/wall2.xpm", &map->textures.we.width, &map->textures.we.height);
+	if (!map->textures.we.img)
+		return -1;
+	map->textures.we.addr = mlx_get_data_addr(map->textures.we.img, &map->textures.we.bits_per_pixel, &map->textures.we.line_length, &map->textures.we.endian);
+	if (!map->textures.we.addr)
+		return -1;
+	map->textures.so.img = mlx_xpm_file_to_image(data->mlx, "./assets/wall3.xpm", &map->textures.so.width, &map->textures.so.height);
+	if (!map->textures.so.img)
+		return -1;
+	map->textures.so.addr = mlx_get_data_addr(map->textures.so.img, &map->textures.so.bits_per_pixel, &map->textures.so.line_length, &map->textures.so.endian);
+	if (!map->textures.so.addr)
+		return -1;
+	map->textures.no.img = mlx_xpm_file_to_image(data->mlx, "./assets/wall4.xpm", &map->textures.no.width, &map->textures.no.height);
+	if (!map->textures.no.img)
+		return -1;
+	map->textures.no.addr = mlx_get_data_addr(map->textures.no.img, &map->textures.no.bits_per_pixel, &map->textures.no.line_length, &map->textures.no.endian);
+	if (!map->textures.no.addr)
+		return -1;
 	return 1;
 }
 
