@@ -10,7 +10,7 @@
 int init_texture(t_data *data, t_map *map)
 {
 
-	map->textures.ea.img = mlx_xpm_file_to_image(data->mlx, "./assets/test2.xpm", &map->textures.ea.width, &map->textures.ea.height);
+	map->textures.ea.img = mlx_xpm_file_to_image(data->mlx, "./assets/wall.xpm", &map->textures.ea.width, &map->textures.ea.height);
 	if (!map->textures.ea.img)
 		return -1;
 	map->textures.ea.addr = mlx_get_data_addr(map->textures.ea.img, &map->textures.ea.bits_per_pixel, &map->textures.ea.line_length, &map->textures.ea.endian);

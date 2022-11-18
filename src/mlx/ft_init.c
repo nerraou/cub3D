@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:49:30 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/14 15:25:48 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/18 11:33:59 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void ft_init(t_data *data)
 {
 	ft_memset(data, 0, sizeof(t_data));
 	data->mlx = mlx_init();
-	data->scale = 32;
+	data->scale = 64;
 	data->width = 34 * data->scale;
 	data->height = 14 * data->scale;
 	data->mlx_win = mlx_new_window(data->mlx, data->width, data->height, "Cub3D");
