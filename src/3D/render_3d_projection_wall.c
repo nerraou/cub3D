@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:52:36 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/13 13:59:17 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/14 11:17:45 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void render_3d_projection_wall(t_data *data, t_map *map, t_ray *ray, float ray_d
 {
 	float distance;
 	float wall_strip_height;
-	distance = ((34 * map->scale) / 2) / tan(ray->fov_angle / 2);
+	distance = (data->width / 2) / tan(ray->fov_angle / 2);
 
 	wall_strip_height = map->scale / ray_distance * distance;
 }

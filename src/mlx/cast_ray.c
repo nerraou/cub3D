@@ -6,13 +6,13 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:22:01 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/09 18:26:54 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/18 14:46:41 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-float cast_ray(t_data *data, t_map *map, float angle, int *horizontal)
+float cast_ray(t_data *data, t_map *map, float angle, int *horizontal, t_vector2 *point)
 {
 	t_vector2 horizontalwallhit;
 	t_vector2 verticalwallhit;
@@ -30,11 +30,15 @@ float cast_ray(t_data *data, t_map *map, float angle, int *horizontal)
 	if (dist.x < dist.y)
 	{
 		*horizontal = 1;
+		point->x = horizontalwallhit.x;
+		point->y = horizontalwallhit.y;
 		return (dist.x);
 	}
 	else
 	{
 		*horizontal = 0;
+		point->x = verticalwallhit.x;
+		point->y = verticalwallhit.y;
 		return (dist.y);
 	}
 }

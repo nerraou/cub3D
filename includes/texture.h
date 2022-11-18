@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_map.c                                         :+:      :+:    :+:   */
+/*   texture.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 08:16:50 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/18 18:05:28 by nerraou          ###   ########.fr       */
+/*   Created: 2022/11/14 15:46:32 by nerraou           #+#    #+#             */
+/*   Updated: 2022/11/16 19:51:32 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#ifndef TEXTURE_H
+#define TEXTURE_H
 
-void init_map(t_map *map)
+typedef struct s_texture
 {
-	ft_memset(map, 0, sizeof(t_map));
-	map->ceiling_color = -1;
-	map->floor_color = -1;
-	map->scale = 32;
-}
+	void *img;
+	char *addr;
+	int bits_per_pixel;
+	int line_length;
+	int endian;
+	int width;
+	int height;
+} t_texture;
+
+typedef struct s_textures
+{
+	t_texture no;
+	t_texture we;
+	t_texture so;
+	t_texture ea;
+} t_textures;
+
+#endif

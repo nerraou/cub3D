@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_map.c                                         :+:      :+:    :+:   */
+/*   init_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 08:16:50 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/18 18:05:28 by nerraou          ###   ########.fr       */
+/*   Created: 2022/11/14 16:20:22 by nerraou           #+#    #+#             */
+/*   Updated: 2022/11/14 18:00:48 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-void init_map(t_map *map)
+int init_texture(t_data *data, t_map *map)
 {
-	ft_memset(map, 0, sizeof(t_map));
-	map->ceiling_color = -1;
-	map->floor_color = -1;
-	map->scale = 32;
+	map->textures.ea = mlx_xpm_file_to_image(data->mlx, "../../assets/test1.xpm", &map->textures.size, &map->textures.size);
+	if (map->textures.ea == NULL)
+		return -1;
+	return 1;
 }
