@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_rays.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 13:47:05 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/16 20:02:27 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/18 00:38:05 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,30 @@ int is_ray_facing_right(float angle)
 	return -1;
 }
 
+int *create_texture(int width, int height)
+{
+	int *texture;
+	int x;
+	int y;
+
+	texture = (int *)malloc(sizeof(int) * width * height);
+	y = 0;
+	while (y < height)
+	{
+		x = 0;
+		while (x < width)
+		{
+			if (x % 8 && y % 8)
+				texture[y * height + x] = 0x0000FF;
+			else
+				texture[y * height + x] = 0x000000;
+			x++;
+		}
+		y++;
+	}
+	return (texture);
+}
+
 void draw_rays(t_data *data, t_ray *ray, t_map *map)
 {
 	float move_angle;
@@ -35,12 +59,8 @@ void draw_rays(t_data *data, t_ray *ray, t_map *map)
 	int horizontal;
 	int topwallhit;
 	int botomwallhit;
+	// int *texture = create_texture(map->textures.ea.height, map->textures.ea.height);
 
-	int texX;
-	int texY;
-	float wallX;
-	float step;
-	float textpos;
 	float ray_hit_point;
 
 	horizontal = 0;
@@ -55,34 +75,25 @@ void draw_rays(t_data *data, t_ray *ray, t_map *map)
 		ray_distance = ray_distance * cos(move_angle - map->player.rotation_angle);
 		wall_strip_height = map->scale / ray_distance * distance;
 
-		if (horizontal == 1)
-			wallX = map->player.x + ray_distance * ray_hit_point;
-		else
-			wallX = map->player.y + ray_distance * ray_hit_point;
-
-		wallX -= floor(wallX);
-
-		texX = (int)(wallX * (float)map->textures.ea.width);
-
-		if (horizontal && ray_hit_point > 0.0f)
-			texX = map->textures.ea.width - texX - 1;
-		if (!horizontal && ray_hit_point < 0.0f)
-			texX = map->textures.ea.width - texX - 1;
-
 		topwallhit = ((data->height) / 2) - (wall_strip_height / 2);
 		botomwallhit = ((data->height) / 2) + (wall_strip_height / 2);
 
-		step = 1.0f * map->textures.ea.height / wall_strip_height;
-		textpos = (topwallhit - data->height / 2 + wall_strip_height / 2) * step;
-		int *color;
+		// int texture_offset_x = (int)ray_hit_point % map->textures.ea.width;
+		float texture_offset_x = ray_hit_point / map->scale;
+		texture_offset_x -= floor(texture_offset_x);
+		texture_offset_x *= map->textures.ea.width;
+
+		int texture_offset_y;
+		// float tex_pos = (topwallhit - data->height / 2.0f + wall_strip_height / 2.0f);
+
 		for (int y = topwallhit; y < botomwallhit; y++)
 		{
-			texY = (int)textpos & (map->textures.ea.height - 1);
-			textpos += step;
-			color = (int *)(map->textures.ea.addr + (texY * map->textures.ea.line_length + texX * 4));
-			// if (horizontal == 0)
-			// *color = (*color >> 1) & 8355711;
-			fill(data, *color);
+			float distance_from_top = y + (wall_strip_height / 2.0f) - (data->height / 2.0f);
+			texture_offset_y = distance_from_top * map->textures.ea.height / wall_strip_height;
+			int *texture = (int *)map->textures.ea.addr;
+			int width = map->textures.ea.width;
+
+			fill(data, texture[texture_offset_y * width + (int)texture_offset_x]);
 			ft_mlx_pixel_put(data, i * ray->wall_width, y);
 		}
 
