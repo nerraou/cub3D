@@ -6,7 +6,7 @@
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:13:23 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/19 09:58:48 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/19 10:33:55 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "unistd.h"
 #include <fcntl.h>
+#include <mlx.h>
 #include "libft.h"
 #include "get_next_line.h"
 #include "list.h"
@@ -31,7 +32,7 @@ typedef struct s_map
 	char *ea_wall_texture;
 	int floor_color;
 	int ceiling_color;
-	int *length;
+	int *widths;
 	int width;
 	int height;
 	int scale;
@@ -42,7 +43,7 @@ typedef struct s_map
 int set_textures(const char *line, t_map *map);
 int set_replace_player_position(t_map *data, int scale);
 int set_ceiling_color(const char *line, t_map *map);
-void set_line_length(int **length, char **map, int size);
+void set_map_widths(int **widths, char **map, int size);
 int set_floor_color(const char *line, t_map *map);
 int set_colors(const char *line, t_map *map);
 void init_map(t_map *map);
@@ -54,6 +55,6 @@ int map_parse_header(int fd, t_map *map);
 int map_parse_map(int fd, t_map *map);
 int is_good_map(const t_map *map);
 int is_wall(int x, int y, int scale, char **map);
-int parse(const char *path, t_map *map);
+int parse(const char *path, void *mlx, t_map *map);
 
 #endif

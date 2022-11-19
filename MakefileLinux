@@ -1,5 +1,5 @@
 NAME = cub3D
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -g -Wall -Wextra -Werror
 HEADERS = $(addprefix $(INCLUDES_PATH)/,list.h libft.h get_next_line.h player.h debug.h map.h ft_mlx.h ray.h vector2.h)
 
 SRC = \
@@ -47,7 +47,7 @@ SRC = \
 \
 	src/map/set_textures.c\
 	src/map/set_replace_player_position.c\
-	src/map/set_line_length.c\
+	src/map/set_map_widths.c\
 	src/map/set_colors.c\
 	src/map/set_ceiling_color.c\
 	src/map/set_floor_color.c\

@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_line_length.c                                  :+:      :+:    :+:   */
+/*   set_map_widths.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:33:50 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/07 14:25:27 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/19 10:11:25 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "map.h"
 
-void set_line_length(int **length, char **map, int size)
+void set_map_widths(int **widths, char **map, int size)
 {
-	*length = (int *)malloc(sizeof(int) * size);
-	if (!*length)
+	*widths = (int *)malloc(sizeof(int) * size);
+	if (!*widths)
 		return;
 	int i;
 
 	i = 0;
 	while (map[i])
 	{
-		(*length)[i] = ft_strlen(map[i]);
+		(*widths)[i] = ft_strlen(map[i]);
 		i++;
 	}
 }

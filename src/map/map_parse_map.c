@@ -64,9 +64,9 @@ int map_parse_map(int fd, t_map *map)
         line = get_next_line(fd);
     }
     map->map_array = list_to_array(list);
-    set_line_length(&map->length, map->map_array, list->size);
+    set_map_widths(&map->widths, map->map_array, list->size);
     map->height = list->size;
-    map->width = max_width(map->length, list->size);
+    map->width = max_width(map->widths, list->size);
     list_del(&list, list_del_node);
     return (has_error || map->height <= 2);
 }

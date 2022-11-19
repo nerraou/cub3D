@@ -25,7 +25,7 @@ static void walk(const t_map *map, char **visited, int x, int y)
     char **map_array;
 
     map_array = map->map_array;
-    if (y - 1 < 0 || y + 1 >= map->height || x - 1 < 0 || x + 1 >= map->length[y])
+    if (y - 1 < 0 || y + 1 >= map->height || x - 1 < 0 || x + 1 >= map->widths[y])
     {
         visited[y][x] = 'b';
         return;
@@ -69,7 +69,7 @@ int is_good_map(const t_map *map)
     int y;
     int x;
 
-    visited = copy_map_array(map->length, map->height);
+    visited = copy_map_array(map->widths, map->height);
     y = 0;
     while (y < map->height)
     {
