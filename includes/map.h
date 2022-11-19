@@ -6,21 +6,24 @@
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:13:23 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/19 10:33:55 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/19 18:15:11 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
-#define MAP_H
+# define MAP_H
 
-#include "unistd.h"
-#include <fcntl.h>
-#include <mlx.h>
-#include "libft.h"
-#include "get_next_line.h"
-#include "list.h"
-#include "player.h"
-#include "texture.h"
+# include "unistd.h"
+# include <fcntl.h>
+# include <mlx.h>
+# include "libft.h"
+# include "get_next_line.h"
+# include "list.h"
+# include "player.h"
+# include "texture.h"
+
+# define TEXTURE_ERROR "texture doesn't exists, not valid or \
+cannot be initialized"
 
 typedef struct s_map
 {

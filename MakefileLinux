@@ -34,6 +34,8 @@ SRC = \
 	src/libft/ft_strctrim.c\
 	src/libft/ft_strendswith.c\
 	src/libft/ft_strctrimend.c\
+	src/libft/is_rgb_string.c\
+	src/libft/perror_and_return.c\
 \
 	src/gnl/get_next_line_utils.c\
 	src/gnl/get_next_line.c\
@@ -44,12 +46,11 @@ SRC = \
 	src/list/list_del.c\
 	src/list/list_new.c\
 	src/list/list_to_array.c\
+	src/list/list_del_noop.c\
 \
 	src/map/set_textures.c\
 	src/map/set_map_widths.c\
 	src/map/set_colors.c\
-	src/map/set_ceiling_color.c\
-	src/map/set_floor_color.c\
 	src/map/rgb_from_string.c\
 	src/map/set_replace_player_position.c\
 	src/map/init_map.c\
