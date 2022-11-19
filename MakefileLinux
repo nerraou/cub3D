@@ -46,12 +46,12 @@ SRC = \
 	src/list/list_to_array.c\
 \
 	src/map/set_textures.c\
-	src/map/set_replace_player_position.c\
 	src/map/set_map_widths.c\
 	src/map/set_colors.c\
 	src/map/set_ceiling_color.c\
 	src/map/set_floor_color.c\
 	src/map/rgb_from_string.c\
+	src/map/set_replace_player_position.c\
 	src/map/init_map.c\
 	src/map/is_wall.c\
 	src/map/map_has_header.c\
@@ -96,7 +96,7 @@ SRC = \
 
 OBJ = $(SRC:.c=.o)
 
-INCLUDES_PATH =  ./includes
+INCLUDES_PATH = ./includes
 
 all: $(NAME)
 
