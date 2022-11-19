@@ -19,10 +19,11 @@ int main(int argc, char **argv)
 	event_data.data = &window_data;
 	event_data.map = &map;
 	event_data.ray = &ray;
-	ft_init(&window_data);
-	init_ray(&ray);
+	ft_mlx_init(&window_data);
 	if (parse(argv[1], window_data.mlx, &map) == 0)
 	{
+		ft_mlx_init_window(&window_data, &map);
+		init_ray(&ray, window_data.width);
 		mlx_key_down_hook(window_data.mlx_win, on_key_down, &event_data);
 		mlx_key_up_hook(window_data.mlx_win, on_key_up, &event_data);
 		mlx_loop_hook(window_data.mlx, update_loop, &event_data);

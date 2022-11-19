@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 17:15:26 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/24 18:54:13 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/19 11:01:30 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ typedef struct s_ray
 	int wall_width;
 } t_ray;
 
-void init_ray(t_ray *ray);
+void init_ray(t_ray *ray, int window_width);
 
 #endif

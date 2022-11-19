@@ -62,7 +62,8 @@ SRC = \
 	src/map/parse.c\
 \
 	src/mlx/esc_hook.c\
-	src/mlx/ft_init.c\
+	src/mlx/ft_mlx_init_window.c\
+	src/mlx/ft_mlx_init.c\
 	src/mlx/ft_mlx_pixel_put.c\
 	src/mlx/draw_minimap.c\
 	src/mlx/draw_player.c\

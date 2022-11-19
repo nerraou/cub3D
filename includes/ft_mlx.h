@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:53:02 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/18 13:36:24 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/19 10:59:30 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@
 #include "map.h"
 
 #define ESC_KEY 53
-// #define UP_ARROW_KEY 126
-// #define RIGHT_ARROW_KEY 124
-// #define DOWN_ARROW_KEY 125
-// #define LEFT_ARROW_KEY 123
+#define UP_ARROW_KEY 126
+#define RIGHT_ARROW_KEY 124
+#define DOWN_ARROW_KEY 125
+#define LEFT_ARROW_KEY 123
 #define W_KEY 13
 #define D_KEY 2
 #define S_KEY 1
 #define A_KEY 0
 
-#define UP_ARROW_KEY 65362
-#define RIGHT_ARROW_KEY 65363
-#define DOWN_ARROW_KEY 65364
-#define LEFT_ARROW_KEY 65361
+// #define UP_ARROW_KEY 65362
+// #define RIGHT_ARROW_KEY 65363
+// #define DOWN_ARROW_KEY 65364
+// #define LEFT_ARROW_KEY 65361
 
 typedef struct s_data
 {
@@ -61,7 +61,8 @@ typedef struct s_event_data
 } t_event_data;
 
 void ft_mlx_pixel_put(t_data *data, int x, int y);
-void ft_init(t_data *data);
+void ft_mlx_init(t_data *data);
+void ft_mlx_init_window(t_data *data, const t_map *map);
 void esc_hook(t_data *mlx);
 void draw_minimap(t_data *data, char **map);
 void draw_line(t_data *data, int beginX, int beginY, int endX, int endY);

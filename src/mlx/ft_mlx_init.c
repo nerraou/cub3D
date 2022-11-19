@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_ray.c                                         :+:      :+:    :+:   */
+/*   ft_mlx_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 16:12:26 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/19 11:01:18 by nerraou          ###   ########.fr       */
+/*   Created: 2022/10/03 14:49:30 by nerraou           #+#    #+#             */
+/*   Updated: 2022/11/19 10:55:48 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ray.h"
+#include "ft_mlx.h"
 
-void init_ray(t_ray *ray, int window_width)
+void ft_mlx_init(t_data *data)
 {
-	ray->fov_angle = 60.0f * (M_PI / 180.0f);
-	ray->wall_width = 1;
-	ray->num_rays = window_width / ray->wall_width;
+	ft_memset(data, 0, sizeof(t_data));
+	data->mlx = mlx_init();
 }
