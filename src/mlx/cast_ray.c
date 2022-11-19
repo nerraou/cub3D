@@ -6,13 +6,13 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:22:01 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/18 14:46:41 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/19 15:39:41 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-float cast_ray(t_data *data, t_map *map, float angle, int *horizontal, t_vector2 *point)
+float cast_ray(t_map *map, float angle, int *horizontal, float *point)
 {
 	t_vector2 horizontalwallhit;
 	t_vector2 verticalwallhit;
@@ -21,8 +21,8 @@ float cast_ray(t_data *data, t_map *map, float angle, int *horizontal, t_vector2
 
 	dist.x = INT_MAX;
 	dist.y = INT_MAX;
-	find_wall_hit.x = horizontal_wall_intercept(data, map, &horizontalwallhit, angle);
-	find_wall_hit.y = vertical_wall_intercept(data, map, &verticalwallhit, angle);
+	find_wall_hit.x = horizontal_wall_intercept(map, &horizontalwallhit, angle);
+	find_wall_hit.y = vertical_wall_intercept(map, &verticalwallhit, angle);
 	if (find_wall_hit.x == 1)
 		dist.x = distance(map->player.x, map->player.y, horizontalwallhit.x, horizontalwallhit.y);
 	if (find_wall_hit.y == 1)
@@ -30,15 +30,13 @@ float cast_ray(t_data *data, t_map *map, float angle, int *horizontal, t_vector2
 	if (dist.x < dist.y)
 	{
 		*horizontal = 1;
-		point->x = horizontalwallhit.x;
-		point->y = horizontalwallhit.y;
+		*point = horizontalwallhit.x;
 		return (dist.x);
 	}
 	else
 	{
 		*horizontal = 0;
-		point->x = verticalwallhit.x;
-		point->y = verticalwallhit.y;
+		*point = verticalwallhit.y;
 		return (dist.y);
 	}
 }

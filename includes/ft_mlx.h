@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:53:02 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/19 10:59:30 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/19 15:34:25 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,9 @@ int update_loop(t_event_data *e);
 int set_horizontal_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, float angle);
 int set_vertical_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, float angle);
 
-int horizontal_wall_intercept(t_data *data, t_map *map, t_vector2 *intercept, float angle);
-int vertical_wall_intercept(t_data *data, t_map *map, t_vector2 *intercept, float angle);
+int horizontal_wall_intercept(t_map *map, t_vector2 *intercept, float angle);
+int vertical_wall_intercept(t_map *map, t_vector2 *intercept, float angle);
 
-float cast_ray(t_data *data, t_map *map, float angle, int *horizontal, t_vector2 *point);
+float cast_ray(t_map *map, float angle, int *horizontal, float *point);
 
 #endif

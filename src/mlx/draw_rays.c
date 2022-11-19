@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_rays.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 13:47:05 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/19 11:50:46 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/19 19:16:11 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,65 @@ t_texture *define_texture(t_map *map, float angle, int horizontal)
 		return &(map->textures.we);
 }
 
+void apply_wall_texture(t_data *data, t_texture *texture, float wall_strip_height, float ray_hit_point)
+{
+	float top_wall_hit;
+	float botom_wall_hit;
+	float step;
+	float texture_pos;
+	t_vector2 text_coor;
+
+	top_wall_hit = ((data->height) / 2) - (wall_strip_height / 2);
+	botom_wall_hit = ((data->height) / 2) + (wall_strip_height / 2);
+	text_coor.x = ray_hit_point / data->scale;
+	text_coor.x -= floor(text_coor.x);
+	text_coor.x *= texture->width;
+	step = ((float)texture->height / wall_strip_height);
+	texture_pos = (topwallhit - data->height / 2.0f + wall_strip_height / 2.0f) * step;
+}
+
+float get_texture_x(float ray_hit_point, int scale, int texture_width)
+{
+	float texture_x;
+
+	texture_x = ray_hit_point / scale;
+	texture_x -= floor(texture_x);
+	texture_x *= texture_width;
+
+	return texture_x;
+}
+
+void render_3d_projection_wall(t_data *data, t_map *map, float angle_ray, int ray_num)
+{
+	float ray_distance;
+	float distance_to_projection;
+	float wall_strip_height;
+	int horizontal;
+	float ray_hit_point;
+
+	distance_to_projection = ((data->width / 2) / tan(ray->fov_angle / 2));
+
+	ray_distance = cast_ray(map, angle_ray, &horizontal, &ray_hit_point);
+	ray_distance = ray_distance * cos(angle_ray - map->player.rotation_angle);
+	wall_strip_height = map->scale / ray_distance * distance_to_projection;
+
+	// apply_wall_texture(data, define_texture(map, angle_ray, horizontal), wall_strip_height, ray_hit_point);
+}
+
+void draw_walls(t_data *data, t_map *map, t_ray *ray)
+{
+	float move_angle;
+	int i;
+
+	move_angle = map->player.rotation_angle - (ray->fov_angle / 2);
+	i = 0;
+	while (i < ray->num_rays)
+	{
+		move_angle = normalize_angle(move_angle);
+		render_3d_projection_wall(data, map, move_angle, i);
+	}
+}
+
 void draw_rays(t_data *data, t_ray *ray, t_map *map)
 {
 	float move_angle;
@@ -50,7 +109,7 @@ void draw_rays(t_data *data, t_ray *ray, t_map *map)
 
 	t_vector2 ray_hit_point;
 	float step;
-	float texture_x;
+	int texture_x;
 
 	horizontal = 0;
 	move_angle = map->player.rotation_angle - (ray->fov_angle / 2);
@@ -72,12 +131,6 @@ void draw_rays(t_data *data, t_ray *ray, t_map *map)
 			texture_x = ray_hit_point.x / map->scale;
 		else
 			texture_x = ray_hit_point.y / map->scale;
-
-		if (horizontal && ray_hit_point.y < 0)
-			texture_x = texture->width - texture_x - 1;
-		if (!horizontal && ray_hit_point.x > 0)
-			texture_x = texture->width - texture_x - 1;
-
 		texture_x -= floor(texture_x);
 		texture_x *= texture->width;
 
@@ -90,8 +143,10 @@ void draw_rays(t_data *data, t_ray *ray, t_map *map)
 			texture_y = (int)texture_pos & (texture->height - 1);
 			texture_pos += step;
 			int *texture_array = (int *)texture->addr;
-
-			fill(data, texture_array[texture_y * texture->width + (int)texture_x]);
+			int color = texture_array[texture_y * texture->width + (int)texture_x];
+			if (ray_distance > 5 * wall_strip_height)
+				color = (color >> 1) & 8355711;
+			fill(data, color);
 			ft_mlx_pixel_put(data, i * ray->wall_width, y);
 		}
 
