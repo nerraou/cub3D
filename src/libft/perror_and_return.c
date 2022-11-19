@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_floor_color.c                                  :+:      :+:    :+:   */
+/*   perror_and_return.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 17:27:38 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/10 23:14:38 by ybahlaou         ###   ########.fr       */
+/*   Created: 2022/11/19 16:13:31 by ybahlaou          #+#    #+#             */
+/*   Updated: 2022/11/19 18:47:05 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "libft.h"
 
-int set_floor_color(const char *line, t_map *map)
+int	perror_and_return(const char *message, int exit_code)
 {
-    map->floor_color = rgb_from_string(line + 1);
-    return (0);
+	ft_putendl_fd(message, STDERR_FILENO);
+	return (exit_code);
 }

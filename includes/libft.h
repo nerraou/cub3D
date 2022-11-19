@@ -6,7 +6,7 @@
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:34:38 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/13 14:22:02 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/19 16:13:55 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int ft_tolower(int c);
 char *ft_strctrim(const char *str, char c);
 int ft_strendswith(const char *str, const char *sub);
 char *ft_strctrimend(const char *str, char c);
+int is_string_rgb(const char *str);
 char *ft_substr(char const *s, unsigned int start, size_t len);
 char *ft_strncpy(char *dest, const char *src, size_t n);
 char *ft_strdup(const char *s);
@@ -51,12 +52,14 @@ void *ft_memset(void *s, int c, size_t n);
 void *ft_malloc(size_t size);
 void *ft_memcpy(void *dst, const void *src, size_t n);
 
-void ft_putendl_fd(char *s, int fd);
+void ft_putendl_fd(const char *s, int fd);
 void ft_putchar_fd(char c, int fd);
-void ft_putstr_fd(char *s, int fd);
+void ft_putstr_fd(const char *s, int fd);
 
 long ft_atol(const char *str);
 
 float distance(float start_x, float start_y, float end_x, float end_y);
 float normalize_angle(float angle);
+int perror_and_return(const char *message, int exit_code);
+
 #endif
