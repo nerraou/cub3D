@@ -6,7 +6,7 @@
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 18:28:19 by ybahlaou          #+#    #+#             */
-/*   Updated: 2022/11/19 18:44:30 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/20 13:12:51 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static int	has_bad_char(const char *str)
 {
 	int	i;
 
+	if (str[0] == '\0')
+		return (1);
 	i = 0;
 	while (str[i] != '\0')
 	{
@@ -65,12 +67,12 @@ static int	read_map(int fd, t_list **list)
 
 	line = skip_empty_lines(fd);
 	if (!line)
-		return (1);
+		return (perror_and_return("missing map", 1));
 	*list = list_new();
 	if (!list)
 	{
 		free(line);
-		return (2);
+		return (perror_and_return("cannot allocate memory", 1));
 	}
 	has_bad_chars = 0;
 	while (line && !has_bad_chars)
@@ -90,6 +92,7 @@ int	map_parse_map(int fd, t_map *map)
 	t_list	*list;
 	int		read_map_error;
 
+	list = NULL;
 	read_map_error = read_map(fd, &list);
 	if (read_map_error == 0)
 	{
@@ -102,5 +105,5 @@ int	map_parse_map(int fd, t_map *map)
 		list_del(&list, list_del_noop);
 	if (read_map_error == 0 && map->height <= 2)
 		return (perror_and_return("map should contain at least 3 rows", 1));
-	return (0);
+	return (read_map_error);
 }

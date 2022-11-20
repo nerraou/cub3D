@@ -28,6 +28,7 @@ int main(int argc, char **argv)
 		mlx_key_up_hook(window_data.mlx_win, on_key_up, &event_data);
 		mlx_loop_hook(window_data.mlx, update_loop, &event_data);
 		mlx_loop(window_data.mlx);
+		return (0);
 	}
-	return 0;
+	return (1);
 }
