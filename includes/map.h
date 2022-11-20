@@ -3,26 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:13:23 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/19 18:15:11 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/20 16:03:47 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
-# define MAP_H
+#define MAP_H
 
-# include "unistd.h"
-# include <fcntl.h>
-# include <mlx.h>
-# include "libft.h"
-# include "get_next_line.h"
-# include "list.h"
-# include "player.h"
-# include "texture.h"
+#include "unistd.h"
+#include <fcntl.h>
+#include <mlx.h>
+#include "libft.h"
+#include "get_next_line.h"
+#include "list.h"
+#include "player.h"
+#include "texture.h"
+#include "ray.h"
 
-# define TEXTURE_ERROR "texture doesn't exists, not valid or \
+#define TEXTURE_ERROR "texture doesn't exists, not valid or \
 cannot be initialized"
 
 typedef struct s_map
@@ -41,6 +42,7 @@ typedef struct s_map
 	int scale;
 	t_textures textures;
 	t_player player;
+	t_ray *ray;
 } t_map;
 
 int set_textures(const char *line, t_map *map);

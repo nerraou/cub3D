@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:46:32 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/16 19:51:32 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/20 15:30:08 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 typedef struct s_texture
 {
 	void *img;
-	char *addr;
+	int *addr;
 	int bits_per_pixel;
 	int line_length;
 	int endian;

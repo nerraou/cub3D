@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:34:38 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/19 16:13:55 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/20 16:02:20 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 #include <string.h>
 #include <limits.h>
 #include <math.h>
+
+typedef struct s_tuplef
+{
+	float value1;
+	float value2;
+} t_tuplef;
 
 int ft_strncmp(const char *s1, const char *s2, size_t n);
 int ft_strcmp(const char *s1, const char *s2);
