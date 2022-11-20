@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_3d.h                                            :+:      :+:    :+:   */
+/*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 13:35:01 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/08 15:01:29 by nerraou          ###   ########.fr       */
+/*   Created: 2022/10/22 13:47:05 by nerraou           #+#    #+#             */
+/*   Updated: 2022/11/20 15:46:17 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_3D_H
-#define FT_3D_H
 #include "ft_mlx.h"
 
-void render_3d_projection_wall(t_data *data, t_map *map, t_ray *ray, float distance);
+void draw_walls(t_data *data, t_ray *ray, t_map *map)
+{
+	float move_angle;
+	int i;
 
-#endif
+	move_angle = map->player.rotation_angle - (ray->fov_angle / 2);
+	i = 0;
+	while (i < ray->num_rays)
+	{
+		move_angle = normalize_angle(move_angle);
+		render_3d_projection_wall(data, move_angle, i * ray->wall_width);
+		move_angle += ray->fov_angle / (data->width);
+		i++;
+	}
+}

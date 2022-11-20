@@ -70,7 +70,7 @@ SRC = \
 	src/mlx/draw_player.c\
 	src/mlx/draw_line.c\
 	src/mlx/draw_rect.c\
-	src/mlx/draw_rays.c\
+	src/mlx/draw_walls.c\
 	src/mlx/draw_circle.c\
 	src/mlx/mlx_key_down_hook.c\
 	src/mlx/mlx_key_up_hook.c\
@@ -83,6 +83,8 @@ SRC = \
 	src/mlx/vertical_wall_intercept.c\
 	src/mlx/horizontal_wall_intercept.c\
 	src/mlx/cast_ray.c\
+	src/mlx/apply_wall_texture.c\
+	src/mlx/render_3d_projection_wall.c\
 \
 	src/player/player_init.c\
 \

@@ -22,6 +22,8 @@ int main(int argc, char **argv)
 	ft_mlx_init(&window_data);
 	if (parse(argv[1], window_data.mlx, &map) == 0)
 	{
+		map.ray = &ray;
+		window_data.map = &map;
 		ft_mlx_init_window(&window_data, &map);
 		init_ray(&ray, window_data.width);
 		mlx_key_down_hook(window_data.mlx_win, on_key_down, &event_data);
