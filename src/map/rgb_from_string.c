@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_colors.c                                       :+:      :+:    :+:   */
+/*   rgb_from_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 17:24:04 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/19 15:33:21 by ybahlaou         ###   ########.fr       */
+/*   Created: 2022/09/28 17:18:10 by nerraou           #+#    #+#             */
+/*   Updated: 2022/11/19 15:32:43 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-int	set_colors(const char *line, t_map *map)
+int	rgb_from_string(const char *str)
 {
-	if (!is_string_rgb(line + 2))
-		return (1);
-	if (line[0] == 'F')
-		map->floor_color = rgb_from_string(line + 1);
-	else if (line[0] == 'C')
-		map->ceiling_color = rgb_from_string(line + 1);
-	return (0);
+	int r;
+	int g;
+	int b;
+	int start_index;
+
+	r = ft_atoi(str);
+	start_index = ft_indexof(str, ',') + 1;
+	g = ft_atoi(str + start_index);
+	str += start_index;
+	start_index = ft_indexof(str, ',') + 1;
+	b = ft_atoi(str + start_index);
+	return (r << 16 | g << 8 | b);
 }

@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_south_texture.c                                :+:      :+:    :+:   */
+/*   ft_mlx_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 16:49:16 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/28 17:15:12 by nerraou          ###   ########.fr       */
+/*   Created: 2022/10/03 14:49:30 by nerraou           #+#    #+#             */
+/*   Updated: 2022/11/19 10:55:48 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "ft_mlx.h"
 
-void set_south_texture(char *line, t_map *map)
+void ft_mlx_init(t_data *data)
 {
-	size_t size;
-
-	size = ft_strlen(line + ft_indexof(line, '.'));
-	map->so_wall_texture = (char *)malloc(sizeof(char) * size + 1);
-	if (!map->no_wall_texture)
-		return;
-	ft_strncpy(map->so_wall_texture, line + ft_indexof(line, '.'), size + 1);
+	ft_memset(data, 0, sizeof(t_data));
+	data->mlx = mlx_init();
 }

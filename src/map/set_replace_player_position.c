@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   set_replace_player_position.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:53:32 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/17 19:16:17 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/14 23:16:22 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-void set_replace_player_position(t_map *data, int scale)
+int set_replace_player_position(t_map *data, int scale)
 {
 	int x;
 	int y;
@@ -29,10 +29,11 @@ void set_replace_player_position(t_map *data, int scale)
 				data->player.x = x * scale;
 				data->player.y = y * scale;
 				data->map_array[y][x] = '0';
-				break;
+				return (0);
 			}
 			x++;
 		}
 		y++;
 	}
+	return (1);
 }

@@ -6,15 +6,15 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:12:26 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/18 18:05:38 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/19 11:01:18 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ray.h"
 
-void init_ray(t_ray *ray)
+void init_ray(t_ray *ray, int window_width)
 {
 	ray->fov_angle = 60.0f * (M_PI / 180.0f);
 	ray->wall_width = 1;
-	ray->num_rays = (34 * 32) / ray->wall_width;
+	ray->num_rays = window_width / ray->wall_width;
 }

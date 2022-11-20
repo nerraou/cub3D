@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_floor_color.c                                  :+:      :+:    :+:   */
+/*   ft_strendswith.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 17:27:38 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/28 22:39:17 by ybahlaou         ###   ########.fr       */
+/*   Created: 2022/11/13 14:29:19 by ybahlaou          #+#    #+#             */
+/*   Updated: 2022/11/13 14:29:19 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "libft.h"
 
-void set_floor_color(const char *line, t_map *map)
+int ft_strendswith(const char *str, const char *sub)
 {
-    map->floor_color = parse_color(line + 1);
+    size_t str_len;
+    size_t sub_len;
+
+    str_len = ft_strlen(str);
+    sub_len = ft_strlen(sub);
+    if (str_len < sub_len)
+        return (0);
+    return (ft_strcmp(str + (str_len - sub_len), sub) == 0);
 }

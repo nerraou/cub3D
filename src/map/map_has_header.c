@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_ceiling_color.c                                :+:      :+:    :+:   */
+/*   map_has_header.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 17:18:10 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/28 22:39:14 by ybahlaou         ###   ########.fr       */
+/*   Created: 2022/10/03 08:18:40 by nerraou           #+#    #+#             */
+/*   Updated: 2022/11/10 22:03:05 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-void set_ceiling_color(const char *line, t_map *map)
+int map_has_header(const t_map *map)
 {
-    map->ceiling_color = parse_color(line + 1);
+	return (map->ceiling_color != -1 &&
+			map->floor_color != -1 &&
+			map->no_wall_texture &&
+			map->so_wall_texture &&
+			map->we_wall_texture &&
+			map->ea_wall_texture);
 }

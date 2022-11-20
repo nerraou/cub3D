@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_colors.c                                       :+:      :+:    :+:   */
+/*   perror_and_return.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 17:24:04 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/19 15:33:21 by ybahlaou         ###   ########.fr       */
+/*   Created: 2022/11/19 16:13:31 by ybahlaou          #+#    #+#             */
+/*   Updated: 2022/11/19 18:47:05 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "libft.h"
 
-int	set_colors(const char *line, t_map *map)
+int	perror_and_return(const char *message, int exit_code)
 {
-	if (!is_string_rgb(line + 2))
-		return (1);
-	if (line[0] == 'F')
-		map->floor_color = rgb_from_string(line + 1);
-	else if (line[0] == 'C')
-		map->ceiling_color = rgb_from_string(line + 1);
-	return (0);
+	ft_putendl_fd(message, STDERR_FILENO);
+	return (exit_code);
 }

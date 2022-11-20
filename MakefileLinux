@@ -1,5 +1,5 @@
 NAME = cub3D
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -g -Wall -Wextra -Werror
 HEADERS = $(addprefix $(INCLUDES_PATH)/,list.h libft.h get_next_line.h player.h debug.h map.h ft_mlx.h ray.h vector2.h)
 
 SRC = \
@@ -31,6 +31,11 @@ SRC = \
 	src/libft/ft_tolower.c\
 	src/libft/distance.c\
 	src/libft/normalize_angle.c\
+	src/libft/ft_strctrim.c\
+	src/libft/ft_strendswith.c\
+	src/libft/ft_strctrimend.c\
+	src/libft/is_rgb_string.c\
+	src/libft/perror_and_return.c\
 \
 	src/gnl/get_next_line_utils.c\
 	src/gnl/get_next_line.c\
@@ -41,24 +46,25 @@ SRC = \
 	src/list/list_del.c\
 	src/list/list_new.c\
 	src/list/list_to_array.c\
+	src/list/list_del_noop.c\
 \
-	src/map/set_map_textures.c\
-	src/map/set_east_texture.c\
-	src/map/set_north_texture.c\
-	src/map/set_south_texture.c\
-	src/map/set_west_texture.c\
-	src/map/set_replace_player_position.c\
-	src/map/set_line_length.c\
+	src/map/set_textures.c\
+	src/map/set_map_widths.c\
 	src/map/set_colors.c\
-	src/map/set_ceiling_color.c\
-	src/map/set_floor_color.c\
-	src/map/parse_color.c\
+	src/map/rgb_from_string.c\
+	src/map/set_replace_player_position.c\
 	src/map/init_map.c\
-	src/map/has_header.c\
 	src/map/is_wall.c\
+	src/map/map_has_header.c\
+	src/map/map_parse_header.c\
+	src/map/open_map.c\
+	src/map/map_parse_map.c\
+	src/map/is_good_map.c\
+	src/map/parse.c\
 \
 	src/mlx/esc_hook.c\
-	src/mlx/ft_init.c\
+	src/mlx/ft_mlx_init_window.c\
+	src/mlx/ft_mlx_init.c\
 	src/mlx/ft_mlx_pixel_put.c\
 	src/mlx/draw_minimap.c\
 	src/mlx/draw_player.c\
@@ -92,7 +98,7 @@ SRC = \
 
 OBJ = $(SRC:.c=.o)
 
-INCLUDES_PATH =  ./includes
+INCLUDES_PATH = ./includes
 
 all: $(NAME)
 

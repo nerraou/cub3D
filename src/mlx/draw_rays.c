@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_rays.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 13:47:05 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/18 19:18:31 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/19 11:50:46 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,11 @@ void draw_rays(t_data *data, t_ray *ray, t_map *map)
 
 		for (int y = topwallhit; y < botomwallhit; y++)
 		{
-			texture_y = (int)texture_pos % texture->height;
+			texture_y = (int)texture_pos & (texture->height - 1);
 			texture_pos += step;
 			int *texture_array = (int *)texture->addr;
-			int width = texture->width;
 
-			fill(data, texture_array[texture_y * width + (int)texture_x]);
+			fill(data, texture_array[texture_y * texture->width + (int)texture_x]);
 			ft_mlx_pixel_put(data, i * ray->wall_width, y);
 		}
 

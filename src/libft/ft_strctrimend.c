@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_color.c                                      :+:      :+:    :+:   */
+/*   ft_strctrimend.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 17:18:10 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/28 22:39:11 by ybahlaou         ###   ########.fr       */
+/*   Created: 2022/11/13 14:29:07 by ybahlaou          #+#    #+#             */
+/*   Updated: 2022/11/13 14:29:12 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "libft.h"
 
-int parse_color(const char *str)
+char *ft_strctrimend(const char *str, char c)
 {
-    int r;
-    int g;
-    int b;
-    int start_index;
+    size_t len;
 
-    r = ft_atoi(str);
-
-    start_index = ft_indexof(str, ',') + 1;
-    g = ft_atoi(str + start_index);
-
-    start_index = ft_indexof(str + start_index, ',') + 1;
-    b = ft_atoi(str + start_index);
-    return (r << 16 | g << 8 | b);
+    len = ft_strlen(str);
+    if (len == 0)
+        return (ft_strdup(""));
+    len--;
+    while (len != 0 && str[len] == c)
+        len--;
+    if (len == 0)
+        return (ft_strdup(""));
+    return (ft_substr(str, 0, len + 1));
 }

@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   has_header.c                                       :+:      :+:    :+:   */
+/*   list_del_noop.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 08:18:40 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/03 09:22:43 by nerraou          ###   ########.fr       */
+/*   Created: 2022/11/19 18:44:07 by ybahlaou          #+#    #+#             */
+/*   Updated: 2022/11/19 18:47:13 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
-
-int has_header(const t_map *map)
+void    list_del_noop(void *content)
 {
-	return (map->ceiling_color != -1 &&
-			map->floor_color != -1 &&
-			map->no_wall_texture &&
-			map->so_wall_texture &&
-			map->we_wall_texture &&
-			map->ea_wall_texture);
+    (void)content;
 }

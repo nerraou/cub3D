@@ -3,20 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:13:23 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/16 19:50:23 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/19 18:15:11 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
-#define MAP_H
+# define MAP_H
 
-#include "libft.h"
-#include "list.h"
-#include "player.h"
-#include "texture.h"
+# include "unistd.h"
+# include <fcntl.h>
+# include <mlx.h>
+# include "libft.h"
+# include "get_next_line.h"
+# include "list.h"
+# include "player.h"
+# include "texture.h"
+
+# define TEXTURE_ERROR "texture doesn't exists, not valid or \
+cannot be initialized"
 
 typedef struct s_map
 {
@@ -28,26 +35,29 @@ typedef struct s_map
 	char *ea_wall_texture;
 	int floor_color;
 	int ceiling_color;
-	int *length;
+	int *widths;
+	int width;
+	int height;
 	int scale;
 	t_textures textures;
 	t_player player;
 } t_map;
 
-void set_west_texture(char *line, t_map *map);
-void set_north_texture(char *line, t_map *map);
-void set_east_texture(char *line, t_map *map);
-void set_south_texture(char *line, t_map *map);
-void set_map_textures(char *line, t_map *map);
-void set_replace_player_position(t_map *data, int scale);
-void set_ceiling_color(const char *line, t_map *map);
-void set_line_length(int **length, char **map, int size);
-void set_floor_color(const char *line, t_map *map);
-void set_colors(char *line, t_map *map);
+int set_textures(const char *line, t_map *map);
+int set_replace_player_position(t_map *data, int scale);
+int set_ceiling_color(const char *line, t_map *map);
+void set_map_widths(int **widths, char **map, int size);
+int set_floor_color(const char *line, t_map *map);
+int set_colors(const char *line, t_map *map);
 void init_map(t_map *map);
 
-int parse_color(const char *str);
-int has_header(const t_map *map);
+int open_map(const char *path);
+int rgb_from_string(const char *str);
+int map_has_header(const t_map *map);
+int map_parse_header(int fd, t_map *map);
+int map_parse_map(int fd, t_map *map);
+int is_good_map(const t_map *map);
 int is_wall(int x, int y, int scale, char **map);
+int parse(const char *path, void *mlx, t_map *map);
 
 #endif
