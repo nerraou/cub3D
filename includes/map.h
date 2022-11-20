@@ -6,12 +6,15 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:13:23 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/20 16:03:47 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/20 17:43:12 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 #define MAP_H
+
+#define TEXTURE_ERROR "texture doesn't exists, not valid or \
+cannot be initialized"
 
 #include "unistd.h"
 #include <fcntl.h>
@@ -22,9 +25,6 @@
 #include "player.h"
 #include "texture.h"
 #include "ray.h"
-
-#define TEXTURE_ERROR "texture doesn't exists, not valid or \
-cannot be initialized"
 
 typedef struct s_map
 {
@@ -40,6 +40,7 @@ typedef struct s_map
 	int width;
 	int height;
 	int scale;
+	int is_door;
 	t_textures textures;
 	t_player player;
 	t_ray *ray;
@@ -62,4 +63,5 @@ int is_good_map(const t_map *map);
 int is_wall(int x, int y, int scale, char **map);
 int parse(const char *path, void *mlx, t_map *map);
 
+int is_door(t_map *map, int x, int y);
 #endif

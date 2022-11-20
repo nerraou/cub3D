@@ -55,6 +55,7 @@ SRC = \
 	src/map/set_replace_player_position.c\
 	src/map/init_map.c\
 	src/map/is_wall.c\
+	src/map/is_door.c\
 	src/map/map_has_header.c\
 	src/map/map_parse_header.c\
 	src/map/open_map.c\
