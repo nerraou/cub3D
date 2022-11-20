@@ -17,7 +17,7 @@ static void init_texture(void *mlx, const char *path, t_texture *texture)
 	texture->img = mlx_xpm_file_to_image(mlx, (char *)path,
 										 &texture->width, &texture->height);
 	if (texture->img)
-		texture->addr = mlx_get_data_addr(texture->img,
+		texture->addr = (int *)mlx_get_data_addr(texture->img,
 										  &texture->bits_per_pixel,
 										  &texture->line_length, &texture->endian);
 }
@@ -46,7 +46,7 @@ static int init_textures(void *mlx, t_map *map)
 
 int parse(const char *path, void *mlx, t_map *map)
 {
-	int fd;
+	int	fd;
 	int has_error;
 
 	if (!ft_strendswith(path, ".cub"))
