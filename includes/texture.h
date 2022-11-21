@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:46:32 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/20 17:43:04 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 15:53:20 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ typedef struct s_textures
 	t_texture we;
 	t_texture so;
 	t_texture ea;
-	t_texture door;
+	t_texture closed_door;
+	t_texture opened_door;
 } t_textures;
 
 #endif

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_open_door.c                                   :+:      :+:    :+:   */
+/*   draw_door.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:10:41 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/21 10:11:41 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 15:59:58 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-void draw_open_door(t_data *data, t_texture *texture, t_tuplef values, int ray_num)
+void draw_door(t_data *data, t_texture *texture, t_tuplef values, int ray_num)
 {
 	t_tuplef wall_ends;
 	t_vector2 text_coor;
