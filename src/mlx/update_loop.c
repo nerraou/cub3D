@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   update_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 10:37:40 by nerraou           #+#    #+#             */
 /*   Updated: 2022/11/20 15:50:50 by nerraou          ###   ########.fr       */
@@ -30,11 +30,8 @@ int update_loop(t_event_data *e)
 		p->x = endX;
 		p->y = endY;
 	}
-	fill(e->data, 0x000000);
-	draw_rect(e->data, 0, 0, e->data->width, e->data->height);
-	// draw_minimap(e->data, e->map->map_array);
 	draw_walls(e->data, e->ray, e->map);
-	draw_player(e->data, &e->map->player);
+	draw_minimap(e->data, e->map);
 	mlx_put_image_to_window(e->data->mlx, e->data->mlx_win, e->data->img, 0, 0);
 	return (0);
 }
