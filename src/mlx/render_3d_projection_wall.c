@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:52:36 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/20 15:52:11 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:46:00 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,13 @@ void render_3d_projection_wall(t_data *data, float angle_ray, int ray_num)
 	ray_distance = ray_distance * cos(angle_ray - data->map->player.rotation_angle);
 	wall_strip_height = data->map->scale / ray_distance * distance_to_projection;
 
-	apply_wall_texture(data, define_texture(data->map, angle_ray, horizontal), (t_tuplef){wall_strip_height, ray_hit_point}, ray_num);
+	if (data->map->is_door == 1)
+	{
+		if (ray_distance < 60)
+			draw_door(data, &(data->map->textures.opened_door), (t_tuplef){wall_strip_height, ray_hit_point}, ray_num);
+		else
+			draw_door(data, &(data->map->textures.closed_door), (t_tuplef){wall_strip_height, ray_hit_point}, ray_num);
+	}
+	else
+		apply_wall_texture(data, define_texture(data->map, angle_ray, horizontal), (t_tuplef){wall_strip_height, ray_hit_point}, ray_num);
 }

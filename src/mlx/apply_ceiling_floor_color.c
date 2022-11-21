@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_texture.c                                     :+:      :+:    :+:   */
+/*   apply_ceiling_floor_color.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 16:20:22 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/14 18:00:48 by nerraou          ###   ########.fr       */
+/*   Created: 2022/11/21 10:07:17 by nerraou           #+#    #+#             */
+/*   Updated: 2022/11/21 10:07:44 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "ft_mlx.h"
 
-int init_texture(t_data *data, t_map *map)
+void apply_ceiling_floor_color(t_data *data, t_tuplef wall_ends, int ray_num)
 {
-	map->textures.ea = mlx_xpm_file_to_image(data->mlx, "../../assets/test1.xpm", &map->textures.size, &map->textures.size);
-	if (map->textures.ea == NULL)
-		return -1;
-	return 1;
+	fill(data, data->map->ceiling_color);
+	draw_rect(data, ray_num, 0, data->map->ray->wall_width, wall_ends.value1);
+	fill(data, data->map->floor_color);
+	draw_rect(data, ray_num, wall_ends.value2, data->map->ray->wall_width, wall_ends.value1);
 }

@@ -55,6 +55,7 @@ SRC = \
 	src/map/set_replace_player_position.c\
 	src/map/init_map.c\
 	src/map/is_wall.c\
+	src/map/is_door.c\
 	src/map/map_has_header.c\
 	src/map/map_parse_header.c\
 	src/map/open_map.c\
@@ -85,6 +86,8 @@ SRC = \
 	src/mlx/cast_ray.c\
 	src/mlx/apply_wall_texture.c\
     src/mlx/render_3d_projection_wall.c\
+    src/mlx/draw_door.c\
+    src/mlx/apply_ceiling_floor_color.c\
 \
 	src/player/player_init.c\
 \

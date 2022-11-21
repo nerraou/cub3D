@@ -53,7 +53,7 @@ static int	has_bad_char(const char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (ft_indexof(" 10NEWS", str[i]) == -1)
+		if (ft_indexof(" 10DNEWS", str[i]) == -1)
 			return (1);
 		i++;
 	}

@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.h                                          :+:      :+:    :+:   */
+/*   is_door.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 15:46:32 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/21 15:53:20 by nerraou          ###   ########.fr       */
+/*   Created: 2022/11/20 17:12:47 by nerraou           #+#    #+#             */
+/*   Updated: 2022/11/21 11:49:39 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTURE_H
-#define TEXTURE_H
+#include "ft_mlx.h"
 
-typedef struct s_texture
+int is_door(t_map *map, int x, int y)
 {
-	void *img;
-	int *addr;
-	int bits_per_pixel;
-	int line_length;
-	int endian;
-	int width;
-	int height;
-} t_texture;
+	int mapX;
+	int mapY;
 
-typedef struct s_textures
-{
-	t_texture no;
-	t_texture we;
-	t_texture so;
-	t_texture ea;
-	t_texture closed_door;
-	t_texture opened_door;
-} t_textures;
-
-#endif
+	mapX = (x / map->scale);
+	mapY = (y / map->scale);
+	if (map->map_array[mapY] != NULL)
+	{
+		if (map->map_array[mapY][mapX] == 'D')
+			return 1;
+	}
+	return 0;
+}
