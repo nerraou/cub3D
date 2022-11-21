@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_door.c                                          :+:      :+:    :+:   */
+/*   apply_ceiling_floor_color.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 17:12:47 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/21 10:35:46 by nerraou          ###   ########.fr       */
+/*   Created: 2022/11/21 10:07:17 by nerraou           #+#    #+#             */
+/*   Updated: 2022/11/21 10:07:44 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-int is_door(t_map *map, int x, int y)
+void apply_ceiling_floor_color(t_data *data, t_tuplef wall_ends, int ray_num)
 {
-	int mapX;
-	int mapY;
-
-	mapX = (x / map->scale);
-	mapY = (y / map->scale);
-	if (map->map_array[mapY] != NULL)
-	{
-		if (map->map_array[mapY][mapX] == 'D')
-			return 1;
-	}
-	map->is_door = 0;
-	return 0;
+	fill(data, data->map->ceiling_color);
+	draw_rect(data, ray_num, 0, data->map->ray->wall_width, wall_ends.value1);
+	fill(data, data->map->floor_color);
+	draw_rect(data, ray_num, wall_ends.value2, data->map->ray->wall_width, wall_ends.value1);
 }

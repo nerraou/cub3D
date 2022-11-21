@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:22:01 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/20 19:04:01 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 10:41:29 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,16 @@ float cast_ray(t_map *map, float angle, int *horizontal, float *point)
 	{
 		*horizontal = 1;
 		*point = horizontalwallhit.x;
-		is_door(map, horizontalwallhit.x, horizontalwallhit.y);
+		if (is_door(map, horizontalwallhit.x, horizontalwallhit.y) == 1)
+			map->is_door = 1;
 		return (dist.x);
 	}
 	else
 	{
+		if (is_door(map, verticalwallhit.x, verticalwallhit.y) == 1)
+			map->is_door = 1;
 		*horizontal = 0;
 		*point = verticalwallhit.y;
-		is_door(map, verticalwallhit.x, verticalwallhit.y);
 		return (dist.y);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:21:17 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/20 19:11:13 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 10:40:14 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int vertical_wall_intercept(t_map *map, t_vector2 *intercept, float angle)
 	width = map->width * map->scale;
 	while (intercept->x >= 0 && intercept->x <= width && intercept->y >= 0 && intercept->y <= heigth)
 	{
-		if (is_wall(intercept->x - in, intercept->y, map->scale, map->map_array))
-			return 1;
 		if (is_door(map, intercept->x - in, intercept->y))
+			return 1;
+		if (is_wall(intercept->x - in, intercept->y, map->scale, map->map_array))
 			return 1;
 		else
 		{

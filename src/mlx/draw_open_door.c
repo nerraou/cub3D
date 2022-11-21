@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   apply_wall_texture.c                               :+:      :+:    :+:   */
+/*   draw_open_door.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 15:42:11 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/21 10:07:37 by nerraou          ###   ########.fr       */
+/*   Created: 2022/11/21 10:10:41 by nerraou           #+#    #+#             */
+/*   Updated: 2022/11/21 10:11:41 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-/*
- ** tuple values is created to hold the wall_strip_heigt and ray_hit_point
- ** tuple wall_ends is ctreated to hold the wall_top_hit_point and the botom_wall_hit_point
- */
-void apply_wall_texture(t_data *data, t_texture *texture, t_tuplef values, int ray_num)
+void draw_open_door(t_data *data, t_texture *texture, t_tuplef values, int ray_num)
 {
 	t_tuplef wall_ends;
 	t_vector2 text_coor;

@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:53:02 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/20 15:47:44 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 10:13:49 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,7 @@ float cast_ray(t_map *map, float angle, int *horizontal, float *point);
 
 void apply_wall_texture(t_data *data, t_texture *texture, t_tuplef values, int ray_num);
 void render_3d_projection_wall(t_data *data, float angle_ray, int ray_num);
+void apply_ceiling_floor_color(t_data *data, t_tuplef wall_ends, int ray_num);
+void draw_open_door(t_data *data, t_texture *texture, t_tuplef values, int ray_num);
 
 #endif

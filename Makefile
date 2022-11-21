@@ -86,6 +86,8 @@ SRC = \
 	src/mlx/cast_ray.c\
 	src/mlx/apply_wall_texture.c\
     src/mlx/render_3d_projection_wall.c\
+    src/mlx/draw_open_door.c\
+    src/mlx/apply_ceiling_floor_color.c\
 \
 	src/player/player_init.c\
 \
