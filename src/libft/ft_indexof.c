@@ -6,15 +6,15 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:37:40 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/27 11:37:41 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:44:58 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_indexof(const char *str, int c)
+int	ft_indexof(const char *str, int c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

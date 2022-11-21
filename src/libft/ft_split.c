@@ -6,15 +6,15 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:51:26 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/27 11:51:31 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:50:19 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t ft_strclen(const char *str, char c)
+static size_t	ft_strclen(const char *str, char c)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (str[i] && str[i] != c)
@@ -22,10 +22,10 @@ static size_t ft_strclen(const char *str, char c)
 	return (i);
 }
 
-static size_t word_count(char const *s, char c)
+static size_t	word_count(char const *s, char c)
 {
-	int index;
-	size_t word;
+	int		index;
+	size_t	word;
 
 	word = 0;
 	index = 0;
@@ -41,9 +41,9 @@ static size_t word_count(char const *s, char c)
 	return (word);
 }
 
-static char **ft_free(char **str, int size)
+static char	**ft_free(char **str, int size)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < size)
@@ -55,13 +55,13 @@ static char **ft_free(char **str, int size)
 	return (NULL);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char **str;
-	size_t i;
-	size_t words;
-	size_t start;
-	size_t length;
+	char	**str;
+	size_t	i;
+	size_t	words;
+	size_t	start;
+	size_t	length;
 
 	words = word_count(s, c);
 	i = 0;

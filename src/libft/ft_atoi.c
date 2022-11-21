@@ -6,22 +6,23 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 09:35:28 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/27 11:37:14 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:44:06 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int i;
-	int signe;
-	int num;
+	int	i;
+	int	signe;
+	int	num;
 
 	i = 0;
 	signe = 1;
 	num = 0;
-	while (str[i] == '\n' || str[i] == '\t' || str[i] == '\r' || str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
+	while (str[i] == '\n' || str[i] == '\t' || str[i] == '\r'\
+	|| str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
 		i++;
 	if (str[i] == '+')
 		i++;

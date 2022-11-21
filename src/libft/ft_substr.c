@@ -6,16 +6,16 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:54:40 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/27 11:54:42 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:59:49 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char *str;
-	size_t size;
+	char	*str;
+	size_t	size;
 
 	size = ft_strlen(s);
 	if (start > size)

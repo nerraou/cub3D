@@ -6,13 +6,13 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:38:44 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/27 11:38:45 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:45:59 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isspace(int c)
+int	ft_isspace(int c)
 {
 	if (c == '\t' || c == '\v' || c == '\f' || c == '\r' || c == ' ')
 		return (1);

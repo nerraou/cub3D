@@ -6,16 +6,16 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:58:20 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/27 11:58:21 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 18:02:27 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list.h"
 
-void list_del(t_list **lst, void (*del)(void *))
+void	list_del(t_list **lst, void (*del)(void *))
 {
-	t_element *head;
-	t_element *next;
+	t_element	*head;
+	t_element	*next;
 
 	next = NULL;
 	head = (*lst)->head;
@@ -23,7 +23,7 @@ void list_del(t_list **lst, void (*del)(void *))
 	{
 		free(*lst);
 		*lst = NULL;
-		return;
+		return ;
 	}
 	while (head != NULL)
 	{

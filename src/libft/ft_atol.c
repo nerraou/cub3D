@@ -6,22 +6,23 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:37:24 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/27 11:37:25 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:44:33 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long ft_atol(const char *str)
+long	ft_atol(const char *str)
 {
-	int i;
-	long sign;
-	long num;
+	int		i;
+	long	sign;
+	long	num;
 
 	i = 0;
 	sign = 1;
 	num = 0;
-	while (str[i] == '\n' || str[i] == '\t' || str[i] == '\r' || str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
+	while (str[i] == '\n' || str[i] == '\t' || str[i] == '\r'\
+	|| str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
 		i++;
 	if (str[i] == '+')
 		i++;

@@ -6,15 +6,15 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:38:27 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/28 15:12:01 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:40:48 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t ft_strclen(const char *s, int param)
+size_t	ft_strclen(const char *s, int param)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s[i] && s[i] != param)
@@ -24,12 +24,12 @@ size_t ft_strclen(const char *s, int param)
 	return (i);
 }
 
-char *ft_strjoin_line(char const *s1, char const *s2)
+char	*ft_strjoin_line(char const *s1, char const *s2)
 {
-	size_t s1_len;
-	size_t s2_len;
-	size_t i;
-	char *str;
+	size_t	s1_len;
+	size_t	s2_len;
+	size_t	i;
+	char	*str;
 
 	i = 0;
 	s1_len = ft_strclen(s1, '\0');
