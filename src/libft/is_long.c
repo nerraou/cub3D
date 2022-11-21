@@ -6,15 +6,15 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:55:30 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/27 11:55:31 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 18:00:25 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int check(unsigned long count, int sign)
+static int	check(unsigned long count, int sign)
 {
-	unsigned long max;
+	unsigned long	max;
 
 	if (sign == 1)
 		max = (unsigned long)LONG_MAX;
@@ -25,11 +25,11 @@ static int check(unsigned long count, int sign)
 	return (1);
 }
 
-int is_long(const char *str)
+int	is_long(const char *str)
 {
-	int i;
-	int sign;
-	unsigned long count;
+	int				i;
+	int				sign;
+	unsigned long	count;
 
 	i = 0;
 	sign = 1;

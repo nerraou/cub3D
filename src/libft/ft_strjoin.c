@@ -6,14 +6,15 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:52:43 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/28 15:10:14 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:58:26 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-static char *ft_strscat(char *s1, char const *s2, size_t start)
+
+static char	*ft_strscat(char *s1, char const *s2, size_t start)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s2[i])
@@ -26,11 +27,11 @@ static char *ft_strscat(char *s1, char const *s2, size_t start)
 	return (s1);
 }
 
-char *ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t s1_len;
-	size_t s2_len;
-	char *str;
+	size_t	s1_len;
+	size_t	s2_len;
+	char	*str;
 
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);

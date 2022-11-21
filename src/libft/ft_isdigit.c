@@ -6,13 +6,13 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:38:25 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/27 11:38:26 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:45:58 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	return ((c >= '0' && c <= '9'));
 }

@@ -6,14 +6,15 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:40:43 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/27 11:47:10 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:46:59 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-static size_t ft_numlen(int n)
+
+static size_t	ft_numlen(int n)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (n < 0)
@@ -28,9 +29,9 @@ static size_t ft_numlen(int n)
 	return (i);
 }
 
-static void check_insert(char *num, int n, size_t len)
+static void	check_insert(char *num, int n, size_t len)
 {
-	int i;
+	int	i;
 
 	i = len;
 	if (n < 0)
@@ -55,10 +56,10 @@ static void check_insert(char *num, int n, size_t len)
 	num[len] = '\0';
 }
 
-char *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-	size_t len;
-	char *num;
+	size_t	len;
+	char	*num;
 
 	len = ft_numlen(n);
 	num = (char *)malloc(sizeof(char) * (len + 1));

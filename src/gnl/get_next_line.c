@@ -6,16 +6,16 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:38:19 by nerraou           #+#    #+#             */
-/*   Updated: 2022/09/28 15:09:32 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:42:30 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *one_line_rest(char **rest, int index)
+char	*one_line_rest(char **rest, int index)
 {
-	char *str;
-	char *to_free;
+	char	*str;
+	char	*to_free;
 
 	str = ft_strjoin_line("", *rest);
 	if (!str)
@@ -31,10 +31,10 @@ char *one_line_rest(char **rest, int index)
 	return (str);
 }
 
-char *join_and_free(char *str, char *buf)
+char	*join_and_free(char *str, char *buf)
 {
-	char *to_free;
-	char *new_str;
+	char	*to_free;
+	char	*new_str;
 
 	to_free = str;
 	new_str = ft_strjoin_line(str, buf);
@@ -42,17 +42,17 @@ char *join_and_free(char *str, char *buf)
 	return (new_str);
 }
 
-void str_del(char **str)
+void	str_del(char **str)
 {
 	free(*str);
 	*str = NULL;
 }
 
-char *read_line(int fd, char **rest)
+char	*read_line(int fd, char **rest)
 {
-	char *buf;
-	char *str;
-	ssize_t reads;
+	char	*buf;
+	char	*str;
+	ssize_t	reads;
 
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
@@ -65,7 +65,7 @@ char *read_line(int fd, char **rest)
 	{
 		reads = read(fd, buf, BUFFER_SIZE);
 		if (reads == 0 || reads == -1)
-			break;
+			break ;
 		buf[reads] = '\0';
 		str = join_and_free(str, buf);
 	}
@@ -77,10 +77,10 @@ char *read_line(int fd, char **rest)
 	return (str);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	int index;
-	static char *rest = NULL;
+	int			index;
+	static char	*rest = NULL;
 
 	if (fd <= -1 || BUFFER_SIZE < 1)
 		return (NULL);
