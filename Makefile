@@ -62,6 +62,7 @@ SRC = \
 	src/map/map_parse_map.c\
 	src/map/is_good_map.c\
 	src/map/parse.c\
+	src/map/init_minimap.c\
 \
 	src/mlx/esc_hook.c\
 	src/mlx/ft_mlx_init_window.c\
