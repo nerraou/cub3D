@@ -6,7 +6,7 @@
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 10:37:40 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/20 15:50:50 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/22 09:57:21 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int update_loop(t_event_data *e)
 		p->y = endY;
 	}
 	draw_walls(e->data, e->ray, e->map);
-	draw_minimap(e->data, e->map);
+	draw_minimap(e->data, e->map, &e->map->minimap);
 	mlx_put_image_to_window(e->data->mlx, e->data->mlx_win, e->data->img, 0, 0);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:13:23 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/20 17:43:12 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 22:45:03 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ cannot be initialized"
 #include "texture.h"
 #include "ray.h"
 
+typedef struct	s_minimap
+{
+	int			scale;
+	t_player	player;
+	int			x;
+	int			y;
+}				t_minimap;
+
 typedef struct s_map
 {
 	char player_orientation;
@@ -44,6 +52,7 @@ typedef struct s_map
 	t_textures textures;
 	t_player player;
 	t_ray *ray;
+	t_minimap	minimap;
 } t_map;
 
 int set_textures(const char *line, t_map *map);
@@ -64,4 +73,5 @@ int is_wall(int x, int y, int scale, char **map);
 int parse(const char *path, void *mlx, t_map *map);
 
 int is_door(t_map *map, int x, int y);
+
 #endif

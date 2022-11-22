@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:36:43 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/21 19:20:43 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/21 22:35:39 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,29 +23,18 @@ static int	get_color(char cell_value)
 	return (0xFFAA00);
 }
 
-static void init_minimap_player(t_player *dest, const t_map *map, int mmap_scale, const t_vector2 *start)
+float	rescale(float value, int original_scale, int new_scale)
 {
-	ft_memcpy(dest, &map->player, sizeof(t_player));
-	dest->x = dest->x / map->scale * mmap_scale + start->x;
-	dest->y = dest->y / map->scale * mmap_scale + start->y;
+	return (value / original_scale * new_scale);
 }
 
-static void cast_minimap_ray(t_data *data, t_map *map, float angle)
+static void cast_minimap_ray(t_data *data, t_map *map, const t_minimap *mmap, float angle)
 {
 	t_vector2 horizontalwallhit;
 	t_vector2 verticalwallhit;
 	t_vector2 find_wall_hit;
 	t_vector2 dist;
 	int in;
-
-	t_player	player;
-	int			mmap_scale;
-	t_vector2	start;
-
-	mmap_scale = map->scale * 0.25f;
-	start.x = data->width - map->width * mmap_scale;
-	start.y = data->height - map->height * mmap_scale;
-	init_minimap_player(&player, map, mmap_scale, &start);
 
 	dist.x = INT_MAX;
 	dist.y = INT_MAX;
@@ -55,23 +44,19 @@ static void cast_minimap_ray(t_data *data, t_map *map, float angle)
 		dist.x = distance(map->player.x, map->player.y, horizontalwallhit.x, horizontalwallhit.y);
 	if (find_wall_hit.y == 1)
 		dist.y = distance(map->player.x, map->player.y, verticalwallhit.x, verticalwallhit.y);
+	horizontalwallhit.x = rescale(horizontalwallhit.x, map->scale, mmap->scale);
+	horizontalwallhit.y = rescale(horizontalwallhit.y, map->scale, mmap->scale);
+	verticalwallhit.x = rescale(verticalwallhit.x, map->scale, mmap->scale);
+	verticalwallhit.y = rescale(verticalwallhit.y, map->scale, mmap->scale);
 	if (dist.x < dist.y)
-	{
-		// draw from horizontalwallhit
-		draw_line(data, player.x, player.y, horizontalwallhit.x / map->scale * mmap_scale + start.x, horizontalwallhit.y / map->scale * mmap_scale + start.y);
-	}
+		draw_line(data, mmap->player.x, mmap->player.y, horizontalwallhit.x + mmap->x, horizontalwallhit.y + mmap->y);
 	else
-	{
-		// draw from verticalwallhit
-		draw_line(data, player.x, player.y, verticalwallhit.x / map->scale * mmap_scale + start.x, verticalwallhit.y / map->scale * mmap_scale + start.y);
-	}
+		draw_line(data, mmap->player.x, mmap->player.y, verticalwallhit.x + mmap->x, verticalwallhit.y + mmap->y);
 }
 
-
-static void draw_rays(t_data *data, t_ray *ray, t_map *map, int mmap_scale)
+static void draw_rays(t_data *data, t_ray *ray, t_map *map)
 {
 	float		move_angle;
-	(void)mmap_scale;
 
 	move_angle = map->player.rotation_angle - (ray->fov_angle / 2);
 
@@ -79,24 +64,20 @@ static void draw_rays(t_data *data, t_ray *ray, t_map *map, int mmap_scale)
 	while (i < ray->num_rays)
 	{
 		move_angle = normalize_angle(move_angle);
-		cast_minimap_ray(data, map, move_angle);
+		cast_minimap_ray(data, map, &map->minimap, move_angle);
 		move_angle += ray->fov_angle / (map->width * map->scale);
 		i++;
 	}
 }
 
-void	draw_minimap(t_data *data, t_map *map)
+void	draw_minimap(t_data *data, t_map *map, t_minimap *mmap)
 {
 	int			x;
 	int			y;
-	t_player	player;
-	int			mmap_scale;
-	t_vector2	start;
 
-	mmap_scale = map->scale * 0.25f;
-	start.x = data->width - map->width * mmap_scale;
-	start.y = data->height - map->height * mmap_scale;
-	init_minimap_player(&player, map, mmap_scale, &start);
+	mmap->player.x = rescale(map->player.x, map->scale, mmap->scale) + mmap->x;
+	mmap->player.y = rescale(map->player.y, map->scale, mmap->scale) + mmap->y;
+
 	y = 0;
 	while (map->map_array[y] != NULL)
 	{
@@ -105,11 +86,12 @@ void	draw_minimap(t_data *data, t_map *map)
 		{
 			fill(data, get_color(map->map_array[y][x]));
 			if (map->map_array[y][x] != ' ')
-				draw_rect(data, x * mmap_scale + start.x, y * mmap_scale + start.y, mmap_scale, mmap_scale);
+				draw_rect(data, x * mmap->scale + mmap->x, y * mmap->scale + mmap->y, mmap->scale, mmap->scale);
 			x++;
 		}
 		y++;
 	}
-	draw_player(data, &player);
-	draw_rays(data, map->ray, map, mmap_scale);
+	draw_player(data, &mmap->player);
+	fill(data, 0xff634F);
+	draw_rays(data, map->ray, map);
 }

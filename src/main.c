@@ -26,6 +26,7 @@ int main(int argc, char **argv)
 		window_data.map = &map;
 		ft_mlx_init_window(&window_data, &map);
 		init_ray(&ray, window_data.width);
+		init_minimap(&window_data, &map);
 		mlx_key_down_hook(window_data.mlx_win, on_key_down, &event_data);
 		mlx_key_up_hook(window_data.mlx_win, on_key_up, &event_data);
 		mlx_loop_hook(window_data.mlx, update_loop, &event_data);
