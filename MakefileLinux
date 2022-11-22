@@ -36,6 +36,7 @@ SRC = \
 	src/libft/ft_strctrimend.c\
 	src/libft/is_rgb_string.c\
 	src/libft/perror_and_return.c\
+	src/libft/ft_free_carray.c\
 \
 	src/gnl/get_next_line_utils.c\
 	src/gnl/get_next_line.c\
