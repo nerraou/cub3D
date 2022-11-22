@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   esc_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:05:14 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/22 16:03:54 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/22 21:42:27 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-void	esc_hook(t_data *data)
+int	esc_hook(t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->mlx_win);
 	exit(0);

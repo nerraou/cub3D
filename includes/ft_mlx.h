@@ -6,7 +6,7 @@
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:53:02 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/22 10:07:47 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/22 23:17:04 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,18 @@ typedef struct s_data
 	t_map *map;
 } t_data;
 
-typedef struct s_event_data
+typedef struct	s_event_data
 {
-	t_data *data;
-	t_map *map;
-	t_ray *ray;
-} t_event_data;
+	t_data		*data;
+	t_map		*map;
+	t_ray		*ray;
+	t_vector2	mouse;
+}				t_event_data;
 
 void ft_mlx_pixel_put(t_data *data, int x, int y);
 void ft_mlx_init(t_data *data);
 void ft_mlx_init_window(t_data *data, const t_map *map);
-void esc_hook(t_data *mlx);
+int esc_hook(t_data *mlx);
 void draw_minimap(t_data *data, t_map *map, t_minimap *mmap);
 void draw_line(t_data *data, int beginX, int beginY, int endX, int endY);
 void draw_rect(t_data *data, int x, int y, int width, int height);
