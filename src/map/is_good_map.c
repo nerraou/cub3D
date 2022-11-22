@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:08:01 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/21 18:12:29 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/22 18:14:26 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ static void	walk(const t_map *map, char **visited, int x, int y)
 	char	**map_array;
 
 	map_array = map->map_array;
-	if (y - 1 < 0 || y + 1 >= map->height || x - 1 < 0 || \
-	x + 1 >= map->widths[y])
+	if (y - 1 < 0 || y + 1 >= map->height || x - 1 < 0 || x + 1 >= map->widths[y] || x >= map->widths[y - 1] || x >= map->widths[y + 1])
 	{
 		visited[y][x] = 'b';
 		return ;
