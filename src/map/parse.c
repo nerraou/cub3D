@@ -6,23 +6,23 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 13:46:35 by ybahlaou          #+#    #+#             */
-/*   Updated: 2022/11/21 16:43:23 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/22 10:52:17 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-static void init_texture(void *mlx, const char *path, t_texture *texture)
+static void	init_texture(void *mlx, const char *path, t_texture *texture)
 {
-	texture->img = mlx_xpm_file_to_image(mlx, (char *)path,
-										 &texture->width, &texture->height);
+	texture->img = mlx_xpm_file_to_image(mlx, (char *)path, \
+	&texture->width, &texture->height);
 	if (texture->img)
-		texture->addr = (int *)mlx_get_data_addr(texture->img,
-												 &texture->bits_per_pixel,
-												 &texture->line_length, &texture->endian);
+		texture->addr = (int *)mlx_get_data_addr(texture->img, \
+	&texture->bits_per_pixel, \
+	&texture->line_length, &texture->endian);
 }
 
-static void read_textures(void *mlx, t_map *map)
+static void	read_textures(void *mlx, t_map *map)
 {
 	init_texture(mlx, map->no_wall_texture, &map->textures.no);
 	init_texture(mlx, map->ea_wall_texture, &map->textures.ea);
@@ -32,7 +32,7 @@ static void read_textures(void *mlx, t_map *map)
 	init_texture(mlx, "./assets/door.xpm", &map->textures.closed_door);
 }
 
-static int init_textures(void *mlx, t_map *map)
+static int	init_textures(void *mlx, t_map *map)
 {
 	read_textures(mlx, map);
 	if (!map->textures.no.img || !map->textures.no.addr)
@@ -47,13 +47,18 @@ static int init_textures(void *mlx, t_map *map)
 		ft_putendl_fd("Door " TEXTURE_ERROR, STDERR_FILENO);
 	if (!map->textures.closed_door.img || !map->textures.closed_door.addr)
 		ft_putendl_fd("Door " TEXTURE_ERROR, STDERR_FILENO);
-	return (!map->textures.no.img || !map->textures.no.addr || !map->textures.ea.img || !map->textures.ea.addr || !map->textures.we.img || !map->textures.we.addr || !map->textures.so.img || !map->textures.so.addr);
+	return (!map->textures.no.img || !map->textures.no.addr \
+	|| !map->textures.ea.img || !map->textures.ea.addr \
+	|| !map->textures.we.img || !map->textures.we.addr \
+	|| !map->textures.closed_door.img || !map->textures.closed_door.addr \
+	|| !map->textures.opened_door.img || !map->textures.opened_door.addr \
+	|| !map->textures.so.img || !map->textures.so.addr);
 }
 
-int parse(const char *path, void *mlx, t_map *map)
+int	parse(const char *path, void *mlx, t_map *map)
 {
-	int fd;
-	int has_error;
+	int	fd;
+	int	has_error;
 
 	if (!ft_strendswith(path, ".cub"))
 		return (perror_and_return("bad file extension, use .cub", 1));

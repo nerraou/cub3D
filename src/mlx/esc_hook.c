@@ -6,15 +6,14 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:05:14 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/17 15:47:05 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/22 16:03:54 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-void esc_hook(t_data *data)
+void	esc_hook(t_data *data)
 {
-
 	mlx_destroy_window(data->mlx, data->mlx_win);
 	exit(0);
 }

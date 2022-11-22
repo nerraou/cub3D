@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   init_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 09:57:50 by ybahlaou          #+#    #+#             */
-/*   Updated: 2022/11/22 10:07:05 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/22 16:11:00 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-void init_minimap(t_data *data, t_map *map)
+void	init_minimap(t_data *data, t_map *map)
 {
-	t_minimap *minimap;
+	t_minimap	*minimap;
 
 	minimap = &map->minimap;
 	minimap->scale = map->scale * 0.25f;

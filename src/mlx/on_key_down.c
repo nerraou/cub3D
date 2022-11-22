@@ -6,13 +6,13 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 10:32:40 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/17 18:24:33 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/22 16:11:33 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-int on_key_down(int keycode, t_event_data *e)
+int	on_key_down(int keycode, t_event_data *e)
 {
 	if (keycode == ESC_KEY)
 		esc_hook(e->data);

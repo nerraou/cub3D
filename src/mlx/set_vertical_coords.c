@@ -6,19 +6,20 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:18:14 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/16 16:44:15 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/22 16:31:55 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-int set_vertical_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, float angle)
+int	set_vertical_coords(t_vector2 *step, t_vector2 *intercept, \
+		t_map *map, float angle)
 {
-	int is_ray_facing_down;
-	int is_ray_facing_right;
+	int	is_ray_facing_down;
+	int	is_ray_facing_right;
 
-	is_ray_facing_down = angle > 0.0f && angle < (float)M_PI;
-	is_ray_facing_right = angle > 3.0f * (float)M_PI_2 || angle < (float)M_PI_2;
+	is_ray_facing_down = (angle > 0.0f && angle < M_PI);
+	is_ray_facing_right = (angle > 3.0f * M_PI_2 || angle < M_PI_2);
 	intercept->x = floor(map->player.x / map->scale) * map->scale;
 	if (is_ray_facing_right)
 		intercept->x += map->scale;
@@ -32,6 +33,6 @@ int set_vertical_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, float
 	else if (is_ray_facing_down && step->y < 0)
 		step->y *= -1;
 	if (!is_ray_facing_right)
-		return 1;
-	return 0;
+		return (1);
+	return (0);
 }

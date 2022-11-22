@@ -6,13 +6,13 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 10:35:50 by nerraou           #+#    #+#             */
-/*   Updated: 2022/10/17 10:36:19 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/22 16:11:44 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-int on_key_up(int keycode, t_event_data *e)
+int	on_key_up(int keycode, t_event_data *e)
 {
 	if (keycode == UP_ARROW_KEY || keycode == DOWN_ARROW_KEY)
 		e->map->player.walk_direction = 0;

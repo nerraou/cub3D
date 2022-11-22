@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_rect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:25:38 by ybahlaou          #+#    #+#             */
-/*   Updated: 2022/11/21 22:27:24 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/22 15:59:07 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ void draw_rect(t_data *data, int x, int y, int width, int height)
 {
 	int dx;
 
-	x = x < 0 ? 0 : x;
-	y = y < 0 ? 0 : y;
+	if (x < 0)
+		x = 0;
+	if (y < 0)
+	 	y = 0;
 
 	height += y;
 	width += x;

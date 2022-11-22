@@ -62,7 +62,6 @@ SRC = \
 	src/map/map_parse_map.c\
 	src/map/is_good_map.c\
 	src/map/parse.c\
-	src/map/init_minimap.c\
 \
 	src/mlx/esc_hook.c\
 	src/mlx/ft_mlx_init_window.c\
@@ -89,6 +88,7 @@ SRC = \
 	src/mlx/render_3d_projection_wall.c\
 	src/mlx/draw_door.c\
     src/mlx/apply_ceiling_floor_color.c\
+	src/mlx/init_minimap.c\
 \
 	src/player/player_init.c\
 \
@@ -97,8 +97,6 @@ SRC = \
 	src/vector2/vector2_set.c\
 	src/vector2/vector2_set_x.c\
 	src/vector2/vector2_set_y.c\
-\
-	src/debug/debug.c\
 \
 	src/main.c
 
