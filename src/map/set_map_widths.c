@@ -12,13 +12,13 @@
 
 #include "map.h"
 
-void set_map_widths(int **widths, char **map, int size)
+void	set_map_widths(int **widths, char **map, int size)
 {
+	int	i;
+
 	*widths = (int *)malloc(sizeof(int) * size);
 	if (!*widths)
-		return;
-	int i;
-
+		return ;
 	i = 0;
 	while (map[i])
 	{

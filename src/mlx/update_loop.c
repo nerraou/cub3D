@@ -3,32 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   update_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 10:37:40 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/22 09:57:21 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/22 16:33:36 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-int update_loop(t_event_data *e)
+int	update_loop(t_event_data *e)
 {
-	t_player *p;
-	int move_by;
-	float endX;
-	float endY;
-	p = &e->map->player;
+	t_player	*p;
+	int			move_by;
+	float		end_x;
+	float		end_y;
 
+	p = &e->map->player;
 	p->rotation_angle += p->turn_direction * p->rotation_speed;
 	move_by = p->walk_direction * p->move_speed;
-	endX = p->x + cos(p->rotation_angle) * move_by;
-	endY = p->y + sin(p->rotation_angle) * move_by;
-
-	if (!is_wall(endX, endY, e->data->scale, e->map->map_array))
+	end_x = p->x + cos(p->rotation_angle) * move_by;
+	end_y = p->y + sin(p->rotation_angle) * move_by;
+	if (!is_wall(end_x, end_y, e->data->scale, e->map->map_array))
 	{
-		p->x = endX;
-		p->y = endY;
+		p->x = end_x;
+		p->y = end_y;
 	}
 	draw_walls(e->data, e->ray, e->map);
 	draw_minimap(e->data, e->map, &e->map->minimap);

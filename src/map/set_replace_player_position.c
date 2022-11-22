@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   set_replace_player_position.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:53:32 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/14 23:16:22 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/22 10:53:25 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-int set_replace_player_position(t_map *data, int scale)
+int	set_replace_player_position(t_map *data, int scale)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (data->map_array[y])

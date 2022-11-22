@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:34:38 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/20 16:02:20 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/22 12:25:13 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@ typedef struct s_tuplef
 	float value1;
 	float value2;
 } t_tuplef;
+
+typedef struct s_tuple
+{
+	int var1;
+	int var2;
+} t_tuple;
+
 
 int ft_strncmp(const char *s1, const char *s2, size_t n);
 int ft_strcmp(const char *s1, const char *s2);

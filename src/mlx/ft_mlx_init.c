@@ -6,13 +6,13 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:49:30 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/19 10:55:48 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/22 16:08:03 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-void ft_mlx_init(t_data *data)
+void	ft_mlx_init(t_data *data)
 {
 	ft_memset(data, 0, sizeof(t_data));
 	data->mlx = mlx_init();

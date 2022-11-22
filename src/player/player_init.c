@@ -6,13 +6,13 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:43:03 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/13 15:09:14 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/22 16:36:58 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "player.h"
 
-static float get_rotation_angle(char orientation)
+static float	get_rotation_angle(char orientation)
 {
 	if (orientation == 'N')
 		return (M_PI_2 * 3);
@@ -24,7 +24,7 @@ static float get_rotation_angle(char orientation)
 		return (M_PI_2);
 }
 
-void player_init(t_player *player, char orientation)
+void	player_init(t_player *player, char orientation)
 {
 	player->turn_direction = 0;
 	player->walk_direction = 0;

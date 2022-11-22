@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vector2_set_x.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/22 16:37:55 by nerraou           #+#    #+#             */
+/*   Updated: 2022/11/22 16:39:13 by nerraou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "vector2.h"
 
-void vector2_set_x(t_vector2 *vector, float x)
+void	vector2_set_x(t_vector2 *vector, float x)
 {
-    vector->x = x;
+	vector->x = x;
 }
