@@ -6,7 +6,7 @@
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:53:02 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/23 09:32:30 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/23 09:40:11 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@
 #define RIGHT_ARROW_KEY 124
 #define DOWN_ARROW_KEY 125
 #define LEFT_ARROW_KEY 123
-#define W_KEY 13
-#define D_KEY 2
-#define S_KEY 1
-#define A_KEY 0
+#define W_KEY 119
+#define D_KEY 100
+#define S_KEY 115
+#define A_KEY 97
 
 // #define UP_ARROW_KEY 65362
 // #define RIGHT_ARROW_KEY 65363
