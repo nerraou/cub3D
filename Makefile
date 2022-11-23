@@ -76,8 +76,10 @@ SRC = \
 	src/mlx/draw_circle.c\
 	src/mlx/mlx_key_down_hook.c\
 	src/mlx/mlx_key_up_hook.c\
+	src/mlx/mlx_mouse_move_hook.c\
 	src/mlx/on_key_up.c\
 	src/mlx/on_key_down.c\
+	src/mlx/on_mouse_move.c\
 	src/mlx/update_loop.c\
 	src/mlx/fill.c\
 	src/mlx/set_horizontal_coords.c\

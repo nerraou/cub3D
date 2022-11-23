@@ -6,7 +6,7 @@
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:53:02 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/22 23:17:04 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/23 09:32:30 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,10 @@ void draw_walls(t_data *data, t_ray *ray, t_map *map);
 
 int mlx_key_down_hook(void *win_ptr, int (*handler)(), void *param);
 int mlx_key_up_hook(void *win_ptr, int (*handler)(), void *param);
+int mlx_mouse_move_hook(void *win_ptr, int (*handler)(), void *param);
 int on_key_down(int keycode, t_event_data *e);
 int on_key_up(int keycode, t_event_data *e);
+int	on_mouse_move(int x, int y, t_event_data *e);
 int update_loop(t_event_data *e);
 
 int set_horizontal_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, float angle);
