@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_wall.c                                          :+:      :+:    :+:   */
+/*   on_mouse_move.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 16:06:06 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/22 23:06:21 by ybahlaou         ###   ########.fr       */
+/*   Created: 2022/11/23 09:24:26 by ybahlaou          #+#    #+#             */
+/*   Updated: 2022/11/23 09:24:27 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "ft_mlx.h"
 
-int	is_wall(int x, int y, int scale, t_map *map)
+int	on_mouse_move(int x, int y, t_event_data *e)
 {
-	int	map_x;
-	int	map_y;
+	t_player	*p;
+	int			turn_direction;
+	(void)y;
 
-	map_x = (x / scale);
-	map_y = (y / scale);
-	if (map_y < 0 || map_y >= map->height || map_x < 0 || map_x >= map->widths[map_y])
-		return (1);
-	if (map->map_array[map_y] != NULL)
-	{
-		if (map->map_array[map_y][map_x] == '1')
-			return (1);
-	}
+	p = &e->map->player;
+	if (x > e->mouse.x)
+		turn_direction = 1;
+	else if (x < e->mouse.x)
+		turn_direction = -1;
+	else
+		turn_direction = 0;
+	p->rotation_angle += turn_direction * p->rotation_speed;
+	e->mouse.x = x;
+	e->mouse.y = y;
 	return (0);
 }

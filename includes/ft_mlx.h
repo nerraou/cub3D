@@ -6,7 +6,7 @@
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:53:02 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/22 10:07:47 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/23 09:40:11 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@
 #define RIGHT_ARROW_KEY 124
 #define DOWN_ARROW_KEY 125
 #define LEFT_ARROW_KEY 123
-#define W_KEY 13
-#define D_KEY 2
-#define S_KEY 1
-#define A_KEY 0
+#define W_KEY 119
+#define D_KEY 100
+#define S_KEY 115
+#define A_KEY 97
 
 // #define UP_ARROW_KEY 65362
 // #define RIGHT_ARROW_KEY 65363
@@ -54,17 +54,18 @@ typedef struct s_data
 	t_map *map;
 } t_data;
 
-typedef struct s_event_data
+typedef struct	s_event_data
 {
-	t_data *data;
-	t_map *map;
-	t_ray *ray;
-} t_event_data;
+	t_data		*data;
+	t_map		*map;
+	t_ray		*ray;
+	t_vector2	mouse;
+}				t_event_data;
 
 void ft_mlx_pixel_put(t_data *data, int x, int y);
 void ft_mlx_init(t_data *data);
 void ft_mlx_init_window(t_data *data, const t_map *map);
-void esc_hook(t_data *mlx);
+int esc_hook(t_data *mlx);
 void draw_minimap(t_data *data, t_map *map, t_minimap *mmap);
 void draw_line(t_data *data, int beginX, int beginY, int endX, int endY);
 void draw_rect(t_data *data, int x, int y, int width, int height);
@@ -75,8 +76,10 @@ void draw_walls(t_data *data, t_ray *ray, t_map *map);
 
 int mlx_key_down_hook(void *win_ptr, int (*handler)(), void *param);
 int mlx_key_up_hook(void *win_ptr, int (*handler)(), void *param);
+int mlx_mouse_move_hook(void *win_ptr, int (*handler)(), void *param);
 int on_key_down(int keycode, t_event_data *e);
 int on_key_up(int keycode, t_event_data *e);
+int	on_mouse_move(int x, int y, t_event_data *e);
 int update_loop(t_event_data *e);
 
 int set_horizontal_coords(t_vector2 *step, t_vector2 *intercept, t_map *map, float angle);

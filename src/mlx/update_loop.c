@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 10:37:40 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/22 16:33:36 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/22 23:07:41 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,21 @@
 int	update_loop(t_event_data *e)
 {
 	t_player	*p;
+	t_vector2	end;
+	t_vector2	max_end;
 	int			move_by;
-	float		end_x;
-	float		end_y;
 
 	p = &e->map->player;
 	p->rotation_angle += p->turn_direction * p->rotation_speed;
 	move_by = p->walk_direction * p->move_speed;
-	end_x = p->x + cos(p->rotation_angle) * move_by;
-	end_y = p->y + sin(p->rotation_angle) * move_by;
-	if (!is_wall(end_x, end_y, e->data->scale, e->map->map_array))
+	end.x = p->x + cos(p->rotation_angle) * move_by;
+	end.y = p->y + sin(p->rotation_angle) * move_by;
+	max_end.x = p->x + cos(p->rotation_angle) * p->walk_direction * 40;
+	max_end.y = p->y + sin(p->rotation_angle) * p->walk_direction * 40;
+	if (!is_wall(max_end.x, max_end.y, e->data->scale, e->map))
 	{
-		p->x = end_x;
-		p->y = end_y;
+		p->x = end.x;
+		p->y = end.y;
 	}
 	draw_walls(e->data, e->ray, e->map);
 	draw_minimap(e->data, e->map, &e->map->minimap);

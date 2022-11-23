@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_wall.c                                          :+:      :+:    :+:   */
+/*   ft_free_carray.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 16:06:06 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/22 23:06:21 by ybahlaou         ###   ########.fr       */
+/*   Created: 2022/11/22 20:35:31 by ybahlaou          #+#    #+#             */
+/*   Updated: 2022/11/22 20:52:06 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "libft.h"
 
-int	is_wall(int x, int y, int scale, t_map *map)
+void	ft_free_carray(char ***array, int size)
 {
-	int	map_x;
-	int	map_y;
+	int	i;
 
-	map_x = (x / scale);
-	map_y = (y / scale);
-	if (map_y < 0 || map_y >= map->height || map_x < 0 || map_x >= map->widths[map_y])
-		return (1);
-	if (map->map_array[map_y] != NULL)
+	i = 0;
+	while (1)
 	{
-		if (map->map_array[map_y][map_x] == '1')
-			return (1);
+		if (size != -1 && i >= size)
+			break ;
+		if (size == -1 && (*array)[i] == NULL)
+			break ;
+		free((*array)[i]);
+		i++;
 	}
-	return (0);
+	free(*array);
+	*array = NULL;
 }

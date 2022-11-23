@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:34:38 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/22 12:25:13 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/22 20:44:53 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void ft_putchar_fd(char c, int fd);
 void ft_putstr_fd(const char *s, int fd);
 
 long ft_atol(const char *str);
+
+void	ft_free_carray(char ***array, int size);
 
 float distance(float start_x, float start_y, float end_x, float end_y);
 float normalize_angle(float angle);

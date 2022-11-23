@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   horizontal_wall_intercept.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:16:30 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/22 16:10:20 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/22 23:03:59 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ int	horizontal_wall_intercept(t_map *map, t_vector2 *intercept,
 	{
 		if (is_door(map, intercept->x, intercept->y - *in))
 			return (1);
-		if (is_wall(intercept->x, intercept->y - *in, map->scale,
-				map->map_array))
+		if (is_wall(intercept->x, intercept->y - *in, map->scale, map))
 			return (1);
 		else
 		{

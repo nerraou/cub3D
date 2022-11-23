@@ -6,7 +6,7 @@
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:13:23 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/21 22:45:03 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/22 23:03:39 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int map_has_header(const t_map *map);
 int map_parse_header(int fd, t_map *map);
 int map_parse_map(int fd, t_map *map);
 int is_good_map(const t_map *map);
-int is_wall(int x, int y, int scale, char **map);
+int is_wall(int x, int y, int scale, t_map *map);
 int parse(const char *path, void *mlx, t_map *map);
 
 int is_door(t_map *map, int x, int y);
