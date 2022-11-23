@@ -6,7 +6,7 @@
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 21:03:03 by ybahlaou          #+#    #+#             */
-/*   Updated: 2022/11/23 09:28:17 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/23 22:38:08 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <fcntl.h>
 #include "get_next_line.h"
 #include "map.h"
-#include "debug.h"
 #include "player.h"
 #include "ft_mlx.h"
 #include "ray.h"
