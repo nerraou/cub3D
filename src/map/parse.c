@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 13:46:35 by ybahlaou          #+#    #+#             */
-/*   Updated: 2022/11/22 10:52:17 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/23 19:29:41 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	parse(const char *path, void *mlx, t_map *map)
 	if (!has_error && !is_good_map(map))
 		has_error = perror_and_return("map is not closed", 1);
 	if (!has_error && set_replace_player_position(map, map->scale))
-		has_error = perror_and_return("missing player position", 1);
+		has_error = perror_and_return("missing/too many player(s)", 1);
 	if (!has_error)
 		player_init(&map->player, map->player_orientation);
 	close(fd);
