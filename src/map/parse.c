@@ -6,7 +6,7 @@
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 13:46:35 by ybahlaou          #+#    #+#             */
-/*   Updated: 2022/11/23 19:29:41 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/23 22:48:44 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ int	parse(const char *path, void *mlx, t_map *map)
 	int	fd;
 	int	has_error;
 
-	if (!ft_strendswith(path, ".cub"))
-		return (perror_and_return("bad file extension, use .cub", 1));
-	fd = open(path, O_RDONLY);
+	fd = open_map(path);
+	if (fd < 0)
+		return (1);
 	if (fd < 0)
 		return (1);
 	init_map(map);
