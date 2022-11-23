@@ -100,6 +100,7 @@ SRC = \
 	src/vector2/vector2_set.c\
 	src/vector2/vector2_set_x.c\
 	src/vector2/vector2_set_y.c\
+	src/vector2/vector2_create.c\
 \
 	src/main.c
 
