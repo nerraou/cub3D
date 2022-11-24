@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:43:03 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/22 16:36:58 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/23 19:09:21 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static float	get_rotation_angle(char orientation)
 {
 	if (orientation == 'N')
 		return (M_PI_2 * 3);
-	else if (orientation == 'E')
-		return (M_PI);
 	else if (orientation == 'W')
+		return (M_PI);
+	else if (orientation == 'E')
 		return (0);
 	else
 		return (M_PI_2);

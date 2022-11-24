@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:56:41 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/23 23:50:37 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/24 14:15:09 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	draw_line(t_data *data, t_vector2 begin, t_vector2 end)
 {
-	double delta_x;
-	double delta_y;
-	double pixel_x;
-	double pixel_y;
-	int pixels;
+	double	delta_x;
+	double	delta_y;
+	double	pixel_x;
+	double	pixel_y;
+	int		pixels;
 
 	delta_x = end.x - begin.x;
 	delta_y = end.y - begin.y;

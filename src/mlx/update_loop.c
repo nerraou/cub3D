@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 10:37:40 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/22 23:07:41 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/23 19:04:39 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,13 @@ int	update_loop(t_event_data *e)
 	move_by = p->walk_direction * p->move_speed;
 	end.x = p->x + cos(p->rotation_angle) * move_by;
 	end.y = p->y + sin(p->rotation_angle) * move_by;
-	max_end.x = p->x + cos(p->rotation_angle) * p->walk_direction * 40;
-	max_end.y = p->y + sin(p->rotation_angle) * p->walk_direction * 40;
-	if (!is_wall(max_end.x, max_end.y, e->data->scale, e->map))
+	move_by = p->walk_direction * 21;
+	max_end.x = p->x + cos(p->rotation_angle) * move_by;
+	max_end.y = p->y + sin(p->rotation_angle) * move_by;
+	if (!is_wall(end.x, max_end.y, e->data->scale, e->map) && \
+		!is_wall(max_end.x, end.y, e->data->scale, e->map) && \
+		!is_wall(end.x, end.y, e->data->scale, e->map) && \
+		!is_wall(max_end.x, max_end.y, e->data->scale, e->map))
 	{
 		p->x = end.x;
 		p->y = end.y;

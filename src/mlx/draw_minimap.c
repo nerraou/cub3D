@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:36:43 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/24 00:00:06 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/24 14:37:51 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,19 @@ static void	cast_minimap_ray(t_data *data, t_map *map,
 	vwallhit.x = rescale(vwallhit.x, map->scale, mmap->scale);
 	vwallhit.y = rescale(vwallhit.y, map->scale, mmap->scale);
 	if (dist.x < dist.y)
-		return draw_line(data, vector2_create(mmap->player.x, mmap->player.y),
-			vector2_create(hwallhit.x + mmap->x, hwallhit.y + mmap->y));
+		return (draw_line(data, vector2_create(mmap->player.x, mmap->player.y),
+				vector2_create(hwallhit.x + mmap->x, hwallhit.y + mmap->y)));
 	draw_line(data, vector2_create(mmap->player.x, mmap->player.y),
 		vector2_create(vwallhit.x + mmap->x, vwallhit.y + mmap->y));
 }
 
-static void draw_rays(t_data *data, t_ray *ray, t_map *map)
+static void	draw_rays(t_data *data, t_ray *ray, t_map *map)
 {
-	float		move_angle;
+	float	move_angle;
+	int		i;
 
 	move_angle = map->player.rotation_angle - (ray->fov_angle / 2);
-
-	int i = 0;
+	i = 0;
 	while (i < ray->num_rays)
 	{
 		move_angle = normalize_angle(move_angle);
@@ -80,7 +80,6 @@ void	draw_minimap(t_data *data, t_map *map, t_minimap *mmap)
 
 	mmap->player.x = rescale(map->player.x, map->scale, mmap->scale) + mmap->x;
 	mmap->player.y = rescale(map->player.y, map->scale, mmap->scale) + mmap->y;
-
 	y = 0;
 	while (map->map_array[y] != NULL)
 	{
