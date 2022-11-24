@@ -6,7 +6,7 @@
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:08:01 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/22 23:16:26 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/23 19:25:26 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,21 @@ static int	is_bad_map(char **visited, int height)
 	return (0);
 }
 
+static int	is_bad_doors(const t_map *map, int x, int y)
+{
+	int		can_pass_y;
+	int		can_pass_x;
+	char	**array;
+
+	array = map->map_array;
+	if (x - 1 < 0 || y - 1 < 0
+		|| y + 1 >= map->height || x + 1 >= map->widths[y])
+		return (1);
+	can_pass_y = (array[y - 1][x] == '0' && array[y + 1][x] == '0');
+	can_pass_x = (array[y][x - 1] == '0' && array[y][x + 1] == '0');
+	return (!(can_pass_x ^ can_pass_y));
+}
+
 int	is_good_map(const t_map *map)
 {
 	char	**visited;
@@ -88,6 +103,8 @@ int	is_good_map(const t_map *map)
 		x = 0;
 		while (map->map_array[y][x])
 		{
+			if (map->map_array[y][x] == 'D' && is_bad_doors(map, x, y))
+				return (0);
 			if (map->map_array[y][x] == '0' && visited[y][x] == '-')
 				walk(map, visited, x, y);
 			x++;

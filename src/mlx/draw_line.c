@@ -3,29 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:56:41 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/22 15:59:18 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/23 23:50:37 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-void draw_line(t_data *data, int beginX, int beginY, int endX, int endY)
+void	draw_line(t_data *data, t_vector2 begin, t_vector2 end)
 {
-	double deltaX = endX - beginX;
-	double deltaY = endY - beginY;
-	int pixels = sqrt((deltaX * deltaX) + (deltaY * deltaY));
-	deltaX /= pixels;
-	deltaY /= pixels;
-	double pixelX = beginX;
-	double pixelY = beginY;
+	double delta_x;
+	double delta_y;
+	double pixel_x;
+	double pixel_y;
+	int pixels;
+
+	delta_x = end.x - begin.x;
+	delta_y = end.y - begin.y;
+	pixel_x = begin.x;
+	pixel_y = begin.y;
+	pixels = sqrt((delta_x * delta_x) + (delta_y * delta_y));
+	delta_x /= pixels;
+	delta_y /= pixels;
+	pixel_x = begin.x;
+	pixel_y = begin.y;
 	while (pixels)
 	{
-		ft_mlx_pixel_put(data, pixelX, pixelY);
-		pixelX += deltaX;
-		pixelY += deltaY;
+		ft_mlx_pixel_put(data, pixel_x, pixel_y);
+		pixel_x += delta_x;
+		pixel_y += delta_y;
 		--pixels;
 	}
 }

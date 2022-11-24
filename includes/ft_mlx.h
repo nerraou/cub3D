@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mlx.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:53:02 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/23 19:35:31 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/24 09:11:46 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,8 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y);
 void	ft_mlx_init(t_data *data);
 void	ft_mlx_init_window(t_data *data, const t_map *map);
 void	draw_minimap(t_data *data, t_map *map, t_minimap *mmap);
-void	draw_line(t_data *data, int beginX, int beginY, int endX, int endY);
-void	draw_rect(t_data *data, int x, int y, int width, int height);
-void	draw_circle(t_data *data, int x0, int y0, int radius);
+void	draw_line(t_data *data, t_vector2 begin, t_vector2 end);
+void	draw_rect(t_data *data, t_vector2 start, int width, int height);
 void	fill(t_data *data, int color);
 void	draw_player(t_data *data, const t_player *player);
 void	draw_walls(t_data *data, t_ray *ray, t_map *map);

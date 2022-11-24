@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_player.c                                      :+:      :+:    :+:   */
+/*   vector2_create.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 17:49:26 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/24 09:07:55 by ybahlaou         ###   ########.fr       */
+/*   Created: 2022/11/23 23:55:51 by ybahlaou          #+#    #+#             */
+/*   Updated: 2022/11/23 23:55:59 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_mlx.h"
+#include "vector2.h"
 
-void	draw_player(t_data *data, const t_player *player)
+t_vector2	vector2_create(float x, float y)
 {
-	t_vector2	player_pos;
+	t_vector2	v;
 
-	fill(data, 0xFFAA00);
-	player_pos.x = player->x - 2;
-	player_pos.y = player->y - 2;
-	draw_rect(data, player_pos, 4, 4);
+	v.x = x;
+	v.y = y;
+	return (v);
 }

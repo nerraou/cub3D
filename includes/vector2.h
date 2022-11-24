@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector2.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 19:28:49 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/23 19:30:09 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/23 23:55:23 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ typedef struct s_vector2
 	float	y;
 }			t_vector2;
 
-void	vector2_set(t_vector2 *vector, float x, float y);
-void	vector2_set_x(t_vector2 *vector, float x);
-void	vector2_set_y(t_vector2 *vector, float y);
+void		vector2_set(t_vector2 *vector, float x, float y);
+void		vector2_set_x(t_vector2 *vector, float x);
+void		vector2_set_y(t_vector2 *vector, float y);
+t_vector2	vector2_create(float x, float y);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:36:43 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/21 22:35:39 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/24 00:00:06 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,30 +28,32 @@ float	rescale(float value, int original_scale, int new_scale)
 	return (value / original_scale * new_scale);
 }
 
-static void cast_minimap_ray(t_data *data, t_map *map, const t_minimap *mmap, float angle)
+static void	cast_minimap_ray(t_data *data, t_map *map,
+	const t_minimap *mmap, float angle)
 {
-	t_vector2 horizontalwallhit;
-	t_vector2 verticalwallhit;
-	t_vector2 find_wall_hit;
-	t_vector2 dist;
-	int in;
+	t_vector2	hwallhit;
+	t_vector2	vwallhit;
+	t_tuple		find_wall_hit;
+	t_vector2	dist;
+	int			in;
 
 	dist.x = INT_MAX;
 	dist.y = INT_MAX;
-	find_wall_hit.x = horizontal_wall_intercept(map, &horizontalwallhit, angle, &in);
-	find_wall_hit.y = vertical_wall_intercept(map, &verticalwallhit, angle, &in);
-	if (find_wall_hit.x == 1)
-		dist.x = distance(map->player.x, map->player.y, horizontalwallhit.x, horizontalwallhit.y);
-	if (find_wall_hit.y == 1)
-		dist.y = distance(map->player.x, map->player.y, verticalwallhit.x, verticalwallhit.y);
-	horizontalwallhit.x = rescale(horizontalwallhit.x, map->scale, mmap->scale);
-	horizontalwallhit.y = rescale(horizontalwallhit.y, map->scale, mmap->scale);
-	verticalwallhit.x = rescale(verticalwallhit.x, map->scale, mmap->scale);
-	verticalwallhit.y = rescale(verticalwallhit.y, map->scale, mmap->scale);
+	find_wall_hit.var1 = horizontal_wall_intercept(map, &hwallhit, angle, &in);
+	find_wall_hit.var2 = vertical_wall_intercept(map, &vwallhit, angle, &in);
+	if (find_wall_hit.var1 == 1)
+		dist.x = distance(map->player.x, map->player.y, hwallhit.x, hwallhit.y);
+	if (find_wall_hit.var2 == 1)
+		dist.y = distance(map->player.x, map->player.y, vwallhit.x, vwallhit.y);
+	hwallhit.x = rescale(hwallhit.x, map->scale, mmap->scale);
+	hwallhit.y = rescale(hwallhit.y, map->scale, mmap->scale);
+	vwallhit.x = rescale(vwallhit.x, map->scale, mmap->scale);
+	vwallhit.y = rescale(vwallhit.y, map->scale, mmap->scale);
 	if (dist.x < dist.y)
-		draw_line(data, mmap->player.x, mmap->player.y, horizontalwallhit.x + mmap->x, horizontalwallhit.y + mmap->y);
-	else
-		draw_line(data, mmap->player.x, mmap->player.y, verticalwallhit.x + mmap->x, verticalwallhit.y + mmap->y);
+		return draw_line(data, vector2_create(mmap->player.x, mmap->player.y),
+			vector2_create(hwallhit.x + mmap->x, hwallhit.y + mmap->y));
+	draw_line(data, vector2_create(mmap->player.x, mmap->player.y),
+		vector2_create(vwallhit.x + mmap->x, vwallhit.y + mmap->y));
 }
 
 static void draw_rays(t_data *data, t_ray *ray, t_map *map)
@@ -74,6 +76,7 @@ void	draw_minimap(t_data *data, t_map *map, t_minimap *mmap)
 {
 	int			x;
 	int			y;
+	t_vector2	start;
 
 	mmap->player.x = rescale(map->player.x, map->scale, mmap->scale) + mmap->x;
 	mmap->player.y = rescale(map->player.y, map->scale, mmap->scale) + mmap->y;
@@ -85,8 +88,10 @@ void	draw_minimap(t_data *data, t_map *map, t_minimap *mmap)
 		while (map->map_array[y][x])
 		{
 			fill(data, get_color(map->map_array[y][x]));
+			start.x = x * mmap->scale + mmap->x;
+			start.y = y * mmap->scale + mmap->y;
 			if (map->map_array[y][x] != ' ')
-				draw_rect(data, x * mmap->scale + mmap->x, y * mmap->scale + mmap->y, mmap->scale, mmap->scale);
+				draw_rect(data, start, mmap->scale, mmap->scale);
 			x++;
 		}
 		y++;

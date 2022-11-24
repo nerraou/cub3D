@@ -6,7 +6,7 @@
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 13:55:06 by ybahlaou          #+#    #+#             */
-/*   Updated: 2022/11/20 13:15:52 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/23 23:14:24 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,28 @@ static int	should_parse_textures(const char *line)
 	return (0);
 }
 
+static int	parse_colors_from_line(char *line, t_map *map)
+{
+	int	has_error;
+
+	has_error = set_colors(line, map);
+	if (has_error)
+		return (perror_and_return("bad color format, use F|C r,g,b"
+			", or duplicated color", 2));
+	return (0);
+}
+
+static int	parse_texture_from_line(char *line, t_map *map)
+{
+	int	has_error;
+
+	has_error = set_textures(line, map);
+	if (has_error)
+		return (perror_and_return("bad texture format, use NO|SO|WE|EA path"
+			", or duplicated texture", 2));
+	return (0);
+}
+
 int map_parse_header(int fd, t_map *map)
 {
 	char	*line;
@@ -43,26 +65,16 @@ int map_parse_header(int fd, t_map *map)
 		if (!line)
 			break;
 		if (should_parse_colors(line))
-		{
-			has_error = set_colors(line, map);
-			if (has_error)
-				return (perror_and_return("bad color format, use F|C r,g,b", 1));
-		}
+			has_error = parse_colors_from_line(line, map);
 		else if (should_parse_textures(line))
-		{
-			has_error = set_textures(line, map);
-			if (has_error)
-				return (perror_and_return("bad texture format, use NO|SO|WE|EA path", 1));
-		}
+			has_error = parse_texture_from_line(line, map);
 		else if (line[0] != '\0')
 			has_error = 1;
 		free(line);
-		if (has_error)
-			break;
-		if (map_has_header(map))
+		if (has_error || map_has_header(map))
 			break;
 	}
-	if (!map_has_header(map))
+	if (has_error != 2 && !map_has_header(map))
 		return (perror_and_return("missing or bad header information", 1));
 	if (has_error)
 		return (1);
