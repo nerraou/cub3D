@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 21:03:03 by ybahlaou          #+#    #+#             */
-/*   Updated: 2022/11/23 22:38:08 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/24 14:14:01 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 	t_ray			ray;
 
 	if (argc != 2)
-		return 1;
+		return (1);
 	init_event(&event_data, &window_data, &map, &ray);
 	ft_mlx_init(&window_data);
 	if (parse(argv[1], window_data.mlx, &map) == 0)

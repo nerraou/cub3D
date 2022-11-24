@@ -3,24 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   draw_rect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:25:38 by ybahlaou          #+#    #+#             */
-/*   Updated: 2022/11/23 23:37:48 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/24 14:39:23 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mlx.h"
 
-void draw_rect(t_data *data, t_vector2 start, int width, int height)
+void	draw_rect(t_data *data, t_vector2 start, int width, int height)
 {
-	int dx;
+	int	dx;
 
 	if (start.x < 0)
 		start.x = 0;
 	if (start.y < 0)
-	 	start.y = 0;
-
+		start.y = 0;
 	height += start.y;
 	width += start.x;
 	while (start.y <= height)
