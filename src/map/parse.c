@@ -6,7 +6,7 @@
 /*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 13:46:35 by ybahlaou          #+#    #+#             */
-/*   Updated: 2022/11/23 22:48:44 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/24 17:55:46 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	parse(const char *path, void *mlx, t_map *map)
 	if (!has_error)
 		has_error = map_parse_map(fd, map);
 	if (!has_error && !is_good_map(map))
-		has_error = perror_and_return("map is not closed", 1);
+		has_error = 1;
 	if (!has_error && set_replace_player_position(map, map->scale))
 		has_error = perror_and_return("missing/too many player(s)", 1);
 	if (!has_error)
