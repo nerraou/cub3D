@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:36:43 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/24 14:37:51 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/24 18:29:26 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	draw_rays(t_data *data, t_ray *ray, t_map *map)
 	{
 		move_angle = normalize_angle(move_angle);
 		cast_minimap_ray(data, map, &map->minimap, move_angle);
-		move_angle += ray->fov_angle / (map->width * map->scale);
+		move_angle += ray->fov_angle / data->width;
 		i++;
 	}
 }
@@ -95,7 +95,7 @@ void	draw_minimap(t_data *data, t_map *map, t_minimap *mmap)
 		}
 		y++;
 	}
-	draw_player(data, &mmap->player);
 	fill(data, 0xff634F);
 	draw_rays(data, map->ray, map);
+	draw_player(data, &mmap->player);
 }

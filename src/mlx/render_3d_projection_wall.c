@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:52:36 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/22 16:23:50 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/24 18:07:27 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	render_3d_projection_wall(t_data *data, float angle_ray, int ray_num)
 	distance_to_projection;
 	if (data->map->is_door == 1)
 	{
-		if (ray_distance < 60)
+		if (ray_distance < 20)
 			draw_door(data, &(data->map->textures.opened_door),
 				(t_tuplef){wall_height, ray_hit_point}, ray_num);
 		else

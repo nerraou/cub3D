@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_good_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:08:01 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/24 17:59:10 by ybahlaou         ###   ########.fr       */
+/*   Updated: 2022/11/24 18:46:04 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,27 @@ static int	is_bad_cell(const t_map *map, int x, int y)
 	return (0);
 }
 
-
 static int	is_bad_doors(const t_map *map, int x, int y)
 {
-	int		can_pass_y;
-	int		can_pass_x;
+	char	top;
+	char	bottom;
+	char	left;
+	char	right;
 	char	**array;
 
 	array = map->map_array;
 	if (x - 1 < 0 || y - 1 < 0
 		|| y + 1 >= map->height || x + 1 >= map->widths[y])
 		return (1);
-	can_pass_y = (array[y - 1][x] == '0' && array[y + 1][x] == '0');
-	can_pass_x = (array[y][x - 1] == '0' && array[y][x + 1] == '0');
-	return (!(can_pass_x ^ can_pass_y));
+	top = array[y - 1][x];
+	right = array[y][x + 1];
+	bottom = array[y + 1][x];
+	left = array[y][x - 1];
+	if (top == '1' && bottom == '1' && left == '0' && right == '0')
+		return (0);
+	if (top == '0' && bottom == '0' && left == '1' && right == '1')
+		return (0);
+	return (1);
 }
 
 int	is_good_map(const t_map *map)
@@ -62,10 +69,10 @@ int	is_good_map(const t_map *map)
 		{
 			if (map->map_array[y][x] == 'D' && is_bad_doors(map, x, y))
 				return (perror_and_return("bad map: bad door", 0));
-			if (ft_indexof("D0NEWS", map->map_array[y][x]) != -1
-				&& is_bad_cell(map, x, y))
+			if (ft_indexof("D0NEWS", map->map_array[y][x]) != -1 \
+					&& is_bad_cell(map, x, y))
 				return (perror_and_return("bad map: D0NEWS mustn't be in"
-					" the edges or surrounded by space(s)", 0));
+						" the edges or surrounded by space(s)", 0));
 			x++;
 		}
 		y++;
