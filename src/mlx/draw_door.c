@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:10:41 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/22 15:09:58 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/24 16:58:59 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	draw_door(t_data *data, t_texture *t, t_tuplef values, int ray_num)
 	y = (int)wall_ends.value1;
 	while (y < (int)wall_ends.value2)
 	{
-		text_coor.y = (int)texture_pos & (t->height - 1);
+		text_coor.y = (int)texture_pos % t->height;
 		texture_pos += step;
 		fill(data, t->addr[t->width * (int)text_coor.y + (int)text_coor.x]);
 		ft_mlx_pixel_put(data, ray_num, y);

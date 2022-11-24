@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:42:11 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/22 12:20:50 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/24 18:02:12 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	apply_wall_texture(t_data *d, t_texture *t, t_tuplef values, int r_num)
 	y = (int)wall_ends.value1;
 	while (y < (int)wall_ends.value2)
 	{
-		text_coor.y = (int)texture_pos & (t->height - 1);
+		text_coor.y = (int)texture_pos % t->height;
 		texture_pos += step;
 		fill(d, t->addr[t->width * (int)text_coor.y + (int)text_coor.x]);
 		ft_mlx_pixel_put(d, r_num, y);
