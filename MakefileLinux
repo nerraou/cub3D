@@ -73,7 +73,6 @@ SRC = \
 	src/mlx/draw_line.c\
 	src/mlx/draw_rect.c\
 	src/mlx/draw_walls.c\
-	src/mlx/draw_circle.c\
 	src/mlx/mlx_key_down_hook.c\
 	src/mlx/mlx_key_up_hook.c\
 	src/mlx/mlx_mouse_move_hook.c\
