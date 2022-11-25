@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:36:43 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/24 18:29:26 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/25 16:33:04 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,84 +18,74 @@ static int	get_color(char cell_value)
 		return (0xFFFFFF);
 	if (cell_value == 'D')
 		return (0x123456);
-	else if (cell_value == '0')
-		return (0x555555);
-	return (0xFFAA00);
+	return (0x555555);
 }
 
-float	rescale(float value, int original_scale, int new_scale)
+static void	draw_arc(t_data *data, t_ray *ray, t_map *map)
 {
-	return (value / original_scale * new_scale);
-}
+	float		move_angle;
+	int			i;
+	t_vector2	start;
+	t_vector2	end;
+	t_player	*player;
 
-static void	cast_minimap_ray(t_data *data, t_map *map,
-	const t_minimap *mmap, float angle)
-{
-	t_vector2	hwallhit;
-	t_vector2	vwallhit;
-	t_tuple		find_wall_hit;
-	t_vector2	dist;
-	int			in;
-
-	dist.x = INT_MAX;
-	dist.y = INT_MAX;
-	find_wall_hit.var1 = horizontal_wall_intercept(map, &hwallhit, angle, &in);
-	find_wall_hit.var2 = vertical_wall_intercept(map, &vwallhit, angle, &in);
-	if (find_wall_hit.var1 == 1)
-		dist.x = distance(map->player.x, map->player.y, hwallhit.x, hwallhit.y);
-	if (find_wall_hit.var2 == 1)
-		dist.y = distance(map->player.x, map->player.y, vwallhit.x, vwallhit.y);
-	hwallhit.x = rescale(hwallhit.x, map->scale, mmap->scale);
-	hwallhit.y = rescale(hwallhit.y, map->scale, mmap->scale);
-	vwallhit.x = rescale(vwallhit.x, map->scale, mmap->scale);
-	vwallhit.y = rescale(vwallhit.y, map->scale, mmap->scale);
-	if (dist.x < dist.y)
-		return (draw_line(data, vector2_create(mmap->player.x, mmap->player.y),
-				vector2_create(hwallhit.x + mmap->x, hwallhit.y + mmap->y)));
-	draw_line(data, vector2_create(mmap->player.x, mmap->player.y),
-		vector2_create(vwallhit.x + mmap->x, vwallhit.y + mmap->y));
-}
-
-static void	draw_rays(t_data *data, t_ray *ray, t_map *map)
-{
-	float	move_angle;
-	int		i;
-
+	fill(data, 0xff634F);
+	player = &map->minimap.player;
+	vector2_set(&start, player->x, player->y);
 	move_angle = map->player.rotation_angle - (ray->fov_angle / 2);
 	i = 0;
 	while (i < ray->num_rays)
 	{
 		move_angle = normalize_angle(move_angle);
-		cast_minimap_ray(data, map, &map->minimap, move_angle);
+		end.x = player->x + cos(move_angle) * 15;
+		end.y = player->y + sin(move_angle) * 15;
+		draw_line(data, start, end);
 		move_angle += ray->fov_angle / data->width;
 		i++;
 	}
 }
 
+static int	is_out_of_boundaries(int x, int y, t_map *map)
+{
+	if (x < 0 || y < 0 || y >= map->height || x >= map->widths[y])
+		return (1);
+	return (0);
+}
+
+static void	set_player_coords(t_player *player, t_map *map,
+	int start_x, int start_y)
+{
+	t_minimap	*mmap;
+
+	mmap = &map->minimap;
+	player->x = (map->player.x / map->scale - start_x) * mmap->scale;
+	player->y = (map->player.y / map->scale - start_y) * mmap->scale;
+}
+
 void	draw_minimap(t_data *data, t_map *map, t_minimap *mmap)
 {
-	int			x;
-	int			y;
-	t_vector2	start;
+	const int	s_x = map->player.x / map->scale - 10;
+	const int	s_y = map->player.y / map->scale - 10;
+	int			dx;
+	int			dy;
+	const int	size = 20;
 
-	mmap->player.x = rescale(map->player.x, map->scale, mmap->scale) + mmap->x;
-	mmap->player.y = rescale(map->player.y, map->scale, mmap->scale) + mmap->y;
-	y = 0;
-	while (map->map_array[y] != NULL)
+	set_player_coords(&mmap->player, map, s_x, s_y);
+	dy = 0;
+	while (dy < size)
 	{
-		x = 0;
-		while (map->map_array[y][x])
+		dx = 0;
+		while (dx < size)
 		{
-			fill(data, get_color(map->map_array[y][x]));
-			start.x = x * mmap->scale + mmap->x;
-			start.y = y * mmap->scale + mmap->y;
-			if (map->map_array[y][x] != ' ')
-				draw_rect(data, start, mmap->scale, mmap->scale);
-			x++;
+			fill(data, 0x0);
+			if (!is_out_of_boundaries(dx + s_x, dy + s_y, map))
+				fill(data, get_color(map->map_array[dy + s_y][dx + s_x]));
+			draw_rect(data, vector2_create(dx * mmap->scale, dy * mmap->scale),
+				mmap->scale, mmap->scale);
+			dx++;
 		}
-		y++;
+		dy++;
 	}
-	fill(data, 0xff634F);
-	draw_rays(data, map->ray, map);
+	draw_arc(data, map->ray, map);
 	draw_player(data, &mmap->player);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 13:46:35 by ybahlaou          #+#    #+#             */
-/*   Updated: 2022/11/25 15:32:31 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/25 17:01:57 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static void	read_textures(void *mlx, t_map *map)
 	init_texture(mlx, map->ea_wall_texture, &map->textures.ea);
 	init_texture(mlx, map->so_wall_texture, &map->textures.so);
 	init_texture(mlx, map->we_wall_texture, &map->textures.we);
-	init_texture(mlx, "../../assets/opned-door.xpm", \
+	init_texture(mlx, "../assets/opned-door.xpm", \
 				&map->textures.opened_door);
-	init_texture(mlx, "../../assets/door.xpm", &map->textures.closed_door);
+	init_texture(mlx, "../assets/door.xpm", &map->textures.closed_door);
 }
 
 static int	init_textures(void *mlx, t_map *map)
