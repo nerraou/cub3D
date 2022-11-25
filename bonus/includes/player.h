@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 11:15:31 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/23 19:26:39 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/25 21:02:56 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_player
 	float	rotation_speed;
 	int		turn_direction;
 	int		walk_direction;
+	int		side_direction;
 	int		move_speed;
 }			t_player;
 

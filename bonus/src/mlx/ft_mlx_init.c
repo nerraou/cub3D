@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:49:30 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/22 16:08:03 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/25 22:28:39 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,6 @@ void	ft_mlx_init(t_data *data)
 {
 	ft_memset(data, 0, sizeof(t_data));
 	data->mlx = mlx_init();
+	if (!data->mlx)
+		exit(1);
 }
