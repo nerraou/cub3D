@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   normalize_angle.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ybahlaou <ybahlaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:22:50 by nerraou           #+#    #+#             */
-/*   Updated: 2022/11/21 18:01:06 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/11/27 13:45:58 by ybahlaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_mlx.h"
+#include "libft.h"
 
 float	normalize_angle(float angle)
 {
