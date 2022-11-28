@@ -3,6 +3,16 @@ FLAGS = -Wall -Wextra -Werror -Imlx
 HEADERS = $(addprefix $(INCLUDES_PATH)/,list.h get_next_line.h player.h map.h ft_mlx.h ray.h vector2.h)
 LIBFT = ./src/libft/libft.a
 
+INCLUDES_PATH = ./includes
+
+ifdef MLX_LINUX_PATH
+	INCLUDES_FLAGS = -I $(INCLUDES_PATH) -I $(MLX_LINUX_PATH)
+	COMPILE = $(CC) $^ $(INCLUDES_FLAGS) -L$(MLX_LINUX_PATH) -lmlx -lXext -lX11 -lm -lz -o $(NAME)
+else
+	INCLUDES_FLAGS = -I $(INCLUDES_PATH) -Imlx
+	COMPILE = $(CC) $^ $(INCLUDES_FLAGS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+endif
+
 SRC = \
 	src/gnl/get_next_line_utils.c\
 	src/gnl/get_next_line.c\
@@ -65,19 +75,16 @@ SRC = \
 
 OBJ = $(SRC:.c=.o)
 
-INCLUDES_PATH = ./includes
-
-
 all: libft $(NAME)
 
 libft:
 	make -C ./src/libft
 
 %.o: %.c $(HEADERS)
-	$(CC) $(FLAGS) -I $(INCLUDES_PATH) -o $@ -c $<
+	$(CC) $(FLAGS) $(INCLUDES_FLAGS) -o $@ -c $<
 
 $(NAME): $(OBJ) $(LIBFT)
-	$(CC) -lmlx -framework OpenGL -framework AppKit -o $(NAME) $^
+	$(COMPILE)
 
 clean:
 	make -C ./src/libft clean

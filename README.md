@@ -13,7 +13,7 @@ make && ./cub3D
 **[Follow linux installation guide](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html#installation)**
 
 ```bash
-export MLX_PATH=/path/to/mlx_linux
+export MLX_LINUX_PATH=/path/to/mlx_linux
 
 make -f MakefileLinux && ./cub3D
 ```
